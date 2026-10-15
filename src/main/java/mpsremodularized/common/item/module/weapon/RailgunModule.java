@@ -29,7 +29,7 @@ package mpsremodularized.common.item.module.weapon;
 import mpsremodularized.common.capabilities.module.powermodule.ModuleCategory;
 import mpsremodularized.common.capabilities.module.powermodule.ModuleTarget;
 import mpsremodularized.common.capabilities.module.rightclick.IRightClickModule;
-import mpsremodularized.common.capabilities.module.tickable.PlayerTickModule;
+import mpsremodularized.common.capabilities.module.tickable.PassivePlayerTickModule;
 import mpsremodularized.common.utils.ElectricItemUtils;
 import mpsremodularized.common.utils.HeatUtils;
 import mpsremodularized.common.utils.RailgunEffects;
@@ -60,7 +60,7 @@ import javax.annotation.Nonnull;
 
 public class RailgunModule extends AbstractPowerModule {
 
-    public static class Ticker extends PlayerTickModule implements IRightClickModule {
+    public static class Ticker extends PassivePlayerTickModule implements IRightClickModule {
         private static final double RANGE = 200;
         private static final int COOLDOWN_TICKS = 10;
         private static final double IMPULSE_PER_DAMAGE = 50.0;
@@ -89,16 +89,6 @@ public class RailgunModule extends AbstractPowerModule {
                 return true;
             }
             return false;
-        }
-
-        @Override
-        public ItemStack toggleModule(boolean online) {
-            return getModule();
-        }
-
-        @Override
-        public boolean isModuleOnline() {
-            return true;
         }
 
         @Override

@@ -12,6 +12,14 @@ Powersuits and builds as one mod.
 
 JEI and supported intermod integrations are optional.
 
+## Module controls
+
+Select Fist tools through the mode selector or tool-cycle controls. Selected-only
+tools are enabled automatically. Toggles remain for background effects and energy
+use; Energy Shield, Aqua Affinity and Shimmerweave keep their toggles. Passive Tyr,
+Soulstained Steel, Malignant Stronghold, Netherite Battlemage and Hazmat modules
+are enabled automatically when installed and eligible.
+
 ## Build
 
 Windows:

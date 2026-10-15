@@ -110,6 +110,7 @@ public class MPSLanguageProvider_EN_US extends AbstractEquipmentLanguageProvider
 
     @Override
     public void addModules() {
+        addModuleKeybindings = true;
         add(MPSItems.SHOCK_MODULE.get(), "Shock Module");
         add(MPSItems.BLOCK_REACH_MODULE.get(), "Block Reach");
         addItemDescriptions(MPSItems.BLOCK_REACH_MODULE.get(), "Extends block reach from vanilla +1 up to 59 blocks. Successful block actions cost 1,000 FE for each started block beyond vanilla reach; shorter actions cost less.");
@@ -117,7 +118,6 @@ public class MPSLanguageProvider_EN_US extends AbstractEquipmentLanguageProvider
         add("mpsremodularized.module.category.paxel", "Paxel / AIOT");
         add("mpsremodularized.module.category.construction_stick", "Construction Stick");
         for (var entry : mpsremodularized.common.compat.IntermodModules.ENTRIES) add(entry.item().get(), entry.name());
-        addModuleKeybindings = true;
 
         // Armor =======================================================================================
         // Iron Plating --------------------------------------------------------------------------------
@@ -759,6 +759,12 @@ public class MPSLanguageProvider_EN_US extends AbstractEquipmentLanguageProvider
 
     @Override
     public void addKeybinds() {
+        add("keybinding." + MPSConstants.MOD_ID + ".goDownKey", "Descend (MPS)");
+        add("keybinding." + MPSConstants.MOD_ID + ".openKeybindGui", "Open Keybind GUI (MPS)");
+        add("keybinding." + MPSConstants.MOD_ID + ".openCosmeticGUI", "Open Cosmetic GUI (MPS)");
+        add("keybinding." + MPSConstants.MOD_ID + ".openModuleTweakGUI", "Open Module Tweak GUI (MPS)");
+        add("keybinding." + MPSConstants.MOD_ID + ".openInstallSalvageGUI", "Open Install/Salvage GUI (MPS)");
+
         // External items that can be toggled through the MPS keybind system ---------------------------
         add("keybinding.minecraft.clock", "Clock");
         add("keybinding.minecraft.compass", "Compass");

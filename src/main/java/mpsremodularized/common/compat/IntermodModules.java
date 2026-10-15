@@ -81,15 +81,15 @@ public final class IntermodModules {
         for (int i = 0; i < armorPieces.length; i++) {
             String piece = armorPieces[i];
             add(items, "tyr_" + piece + "_module", "Tyr " + title(piece) + " Module",
-                    "forbidden_arcanus:tyr_" + piece, CompatibleMod.FORBIDDEN_ARCANUS, 2, armorKinds[i]);
+                    "forbidden_arcanus:tyr_" + piece, CompatibleMod.FORBIDDEN_ARCANUS, 2, armorKinds[i], false);
             add(items, "soulstained_steel_" + piece + "_module", "Soulstained Steel " + title(piece) + " Module",
-                    "malum:soul_stained_steel_" + piece, CompatibleMod.MALUM, 3, armorKinds[i]);
+                    "malum:soul_stained_steel_" + piece, CompatibleMod.MALUM, 3, armorKinds[i], false);
             add(items, "malignant_stronghold_" + piece + "_module", "Malignant Stronghold " + title(piece) + " Module",
-                    "malum:malignant_stronghold_" + piece, CompatibleMod.MALUM, 4, armorKinds[i]);
+                    "malum:malignant_stronghold_" + piece, CompatibleMod.MALUM, 4, armorKinds[i], false);
             add(items, "hazmat_" + hazmatPieces[i] + "_module", "Hazmat " + title(hazmatPieces[i]) + " Module",
-                    "mekanism:hazmat_" + hazmatPieces[i], CompatibleMod.MEKANISM, 2, armorKinds[i]);
+                    "mekanism:hazmat_" + hazmatPieces[i], CompatibleMod.MEKANISM, 2, armorKinds[i], false);
             add(items, "netherite_battlemage_" + piece + "_module", "Netherite Battlemage " + title(piece) + " Module",
-                    "irons_spellbooks:netherite_mage_" + piece, CompatibleMod.IRONS_SPELLBOOKS, 4, armorKinds[i]);
+                    "irons_spellbooks:netherite_mage_" + piece, CompatibleMod.IRONS_SPELLBOOKS, 4, armorKinds[i], false);
             piece = shimmerPieces[i];
             add(items, "shimmerweave_" + piece + "_module", "Shimmerweave " + title(piece) + " Module",
                     "auroral:shimmerweave_" + piece, CompatibleMod.AURORAL, 4, armorKinds[i]);
@@ -106,17 +106,36 @@ public final class IntermodModules {
     }
 
     private static void add(DeferredRegister.Items items, String id, String name, String donor, CompatibleMod mod, int tier, NativeModuleItem.Kind kind) {
+        boolean toggleable = switch (kind) {
+            case TOOL -> java.util.Set.of("mekanism_configurator_module", "network_reader_module", "seismic_reader_module",
+                    "gps_tool_module", "gps_area_tool_module").contains(id);
+            case STATION -> id.equals("powered_diamond_anvil_module");
+            default -> true;
+        };
+        add(items, id, name, donor, mod, tier, kind, toggleable);
+    }
+
+    private static void add(DeferredRegister.Items items, String id, String name, String donor, CompatibleMod mod, int tier, NativeModuleItem.Kind kind, boolean toggleable) {
         var key = ResourceLocation.fromNamespaceAndPath("mpsremodularized", id);
         DeferredHolder<Item, NativeModuleItem> item;
         if (kind == NativeModuleItem.Kind.GRENADE_LAUNCHER) {
             item = ModuleRegistry.INSTANCE.registerItem(items, key, () -> new NativeModuleItem(donor, mod, kind),
                     GascraftLauncherModule.class, GascraftLauncherModule::new, tier);
         } else if (kind == NativeModuleItem.Kind.STATION) {
-            item = ModuleRegistry.INSTANCE.registerItem(items, key, () -> new NativeModuleItem(donor, mod, kind),
-                    PortableStationModule.class, PortableStationModule::new, tier);
+            item = toggleable
+                    ? ModuleRegistry.INSTANCE.registerItem(items, key, () -> new NativeModuleItem(donor, mod, kind),
+                            PortableStationModule.Toggleable.class, PortableStationModule.Toggleable::new, tier)
+                    : ModuleRegistry.INSTANCE.registerItem(items, key, () -> new NativeModuleItem(donor, mod, kind),
+                            PortableStationModule.class, PortableStationModule::new, tier);
         } else if (kind == NativeModuleItem.Kind.TOOL || kind == NativeModuleItem.Kind.CONSTRUCTION_STICK) {
+            item = toggleable
+                    ? ModuleRegistry.INSTANCE.registerItem(items, key, () -> new NativeModuleItem(donor, mod, kind),
+                            NativeToolModule.Toggleable.class, NativeToolModule.Toggleable::new, tier)
+                    : ModuleRegistry.INSTANCE.registerItem(items, key, () -> new NativeModuleItem(donor, mod, kind),
+                            NativeToolModule.class, NativeToolModule::new, tier);
+        } else if (toggleable) {
             item = ModuleRegistry.INSTANCE.registerItem(items, key, () -> new NativeModuleItem(donor, mod, kind),
-                    NativeToolModule.class, NativeToolModule::new, tier);
+                    ToggleableNativeModule.class, stack -> new ToggleableNativeModule(stack, kind), tier);
         } else {
             item = ModuleRegistry.INSTANCE.registerItem(items, key, () -> new NativeModuleItem(donor, mod, kind),
                     PassiveNativeModule.class, stack -> new PassiveNativeModule(stack, kind), tier);
@@ -124,7 +143,7 @@ public final class IntermodModules {
         ENTRIES.add(new Entry(id, name, donor, mod, tier, kind, item));
     }
 
-    public static final class PassiveNativeModule extends PowerModule implements mpsremodularized.common.capabilities.module.toggleable.IToggleableModule {
+    public static class PassiveNativeModule extends PowerModule {
         public PassiveNativeModule(ItemStack stack, NativeModuleItem.Kind kind) {
             super(stack, kind == NativeModuleItem.Kind.PAXEL ? ModuleCategory.PAXEL : ModuleCategory.ENVIRONMENTAL,
                     switch (kind) {
@@ -136,6 +155,12 @@ public final class IntermodModules {
                     });
         }
         @Override public boolean isAllowed() { return ((NativeModuleItem) getModule().getItem()).available(); }
+    }
+
+    public static final class ToggleableNativeModule extends PassiveNativeModule implements mpsremodularized.common.capabilities.module.toggleable.IToggleableModule {
+        public ToggleableNativeModule(ItemStack stack, NativeModuleItem.Kind kind) {
+            super(stack, kind);
+        }
     }
 
     public static boolean paxelProviderPresent() {

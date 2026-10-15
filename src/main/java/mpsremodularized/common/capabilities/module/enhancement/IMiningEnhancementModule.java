@@ -1,7 +1,6 @@
 package mpsremodularized.common.capabilities.module.enhancement;
 
 import mpsremodularized.common.capabilities.module.rightclick.IRightClickModule;
-import mpsremodularized.common.capabilities.module.toggleable.IToggleableModule;
 import mpsremodularized.common.capabilities.render.highlight.IHighlight;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -12,7 +11,7 @@ import net.minecraft.world.phys.BlockHitResult;
  * This is only an IRightClickModule so that it can be selected and activated and deselected and deactivated like one.
  * No right click functionality is actually being used.
  */
-public interface IMiningEnhancementModule extends IRightClickModule, IToggleableModule, IHighlight {
+public interface IMiningEnhancementModule extends IRightClickModule, IHighlight {
     boolean onBlockStartBreak(ItemStack itemStack, BlockHitResult hitResult, Player player, Level level);
 
     int getEnergyUsage();

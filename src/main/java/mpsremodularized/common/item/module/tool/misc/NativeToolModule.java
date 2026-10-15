@@ -15,7 +15,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
-public final class NativeToolModule extends RightClickModule implements IToggleableModule {
+public class NativeToolModule extends RightClickModule {
+    public static final class Toggleable extends NativeToolModule implements IToggleableModule {
+        public Toggleable(ItemStack module) { super(module); }
+    }
+
     public NativeToolModule(ItemStack module) { super(module,
             ((NativeModuleItem) module.getItem()).kind == NativeModuleItem.Kind.CONSTRUCTION_STICK
                     ? ModuleCategory.CONSTRUCTION_STICK : ModuleCategory.TOOL, ModuleTarget.TOOLONLY); }

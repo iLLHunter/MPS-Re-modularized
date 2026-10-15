@@ -33,13 +33,13 @@ import java.util.function.IntConsumer;
 @OnlyIn(Dist.CLIENT)
 public class KeymappingKeyHandler {
     Minecraft minecraft;
-    public static final KeyMapping goDownKey = new KeyMapping(Component.translatable("keybinding." + MPSConstants.MOD_ID + ".goDownKey").getString(), GLFW.GLFW_KEY_Z, MPSConstants.MPS_ITEM_GROUP);
-    public static final KeyMapping cycleToolBackward = new KeyMapping(Component.translatable("keybinding." + MPSConstants.MOD_ID + ".cycleToolBackward").getString(), GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
-    public static final KeyMapping cycleToolForward = new KeyMapping(Component.translatable("keybinding." + MPSConstants.MOD_ID + ".cycleToolForward").getString(), GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
-    public static final KeyMapping openKeybindGUI = new KeyMapping(Component.translatable("keybinding." + MPSConstants.MOD_ID + ".openKeybindGui").getString()/*"Open MPS Keybind GUI"*/, GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
-    public static final KeyMapping openCosmeticGUI = new KeyMapping(Component.translatable("keybinding." + MPSConstants.MOD_ID + ".openCosmeticGUI").getString() /*Cosmetic GUI (MPS)"*/, GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
-    public static final KeyMapping openModuleTweakGUI = new KeyMapping(Component.translatable("keybinding." + MPSConstants.MOD_ID + ".openModuleTweakGUI").getString() /*Open MPS Keybind GUI"*/, GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
-    public static final KeyMapping openInstallSalvageGUI = new KeyMapping(Component.translatable("keybinding." + MPSConstants.MOD_ID + ".openInstallSalvageGUI").getString() /*Cosmetic GUI (MPS)"*/, GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
+    public static final KeyMapping goDownKey = new KeyMapping("keybinding." + MPSConstants.MOD_ID + ".goDownKey", GLFW.GLFW_KEY_Z, MPSConstants.MPS_ITEM_GROUP);
+    public static final KeyMapping cycleToolBackward = new KeyMapping("keybinding." + MPSConstants.MOD_ID + ".cycleToolBackward", GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
+    public static final KeyMapping cycleToolForward = new KeyMapping("keybinding." + MPSConstants.MOD_ID + ".cycleToolForward", GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
+    public static final KeyMapping openKeybindGUI = new KeyMapping("keybinding." + MPSConstants.MOD_ID + ".openKeybindGui", GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
+    public static final KeyMapping openCosmeticGUI = new KeyMapping("keybinding." + MPSConstants.MOD_ID + ".openCosmeticGUI", GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
+    public static final KeyMapping openModuleTweakGUI = new KeyMapping("keybinding." + MPSConstants.MOD_ID + ".openModuleTweakGUI", GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
+    public static final KeyMapping openInstallSalvageGUI = new KeyMapping("keybinding." + MPSConstants.MOD_ID + ".openInstallSalvageGUI", GLFW.GLFW_KEY_UNKNOWN, MPSConstants.MPS_ITEM_GROUP);
     public static final KeyMapping[] keybindArray = new KeyMapping[]{goDownKey, cycleToolBackward, cycleToolForward, openKeybindGUI, openCosmeticGUI, openModuleTweakGUI, openInstallSalvageGUI};
     public static boolean isKeyPressed(int key) {
         return GLFW.glfwGetKey(Minecraft.getInstance().getWindow().getWindow(), key) == GLFW.GLFW_PRESS;

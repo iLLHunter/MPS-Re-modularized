@@ -159,21 +159,49 @@ final class ModuleRegistryValidation {
         check(!holder.isBound() && isolated.freeze().getFirst().item() == holder, "Discovery does not resolve deferred items");
         var definitions = ModuleRegistry.INSTANCE.freeze();
         var actualIds = definitions.stream().map(definition -> definition.id()).collect(Collectors.toSet());
+        var alwaysEnabledArmor = new java.util.HashSet<ResourceLocation>();
+        for (String family : new String[]{"tyr", "soulstained_steel", "malignant_stronghold", "netherite_battlemage"}) {
+            for (String piece : new String[]{"helmet", "chestplate", "leggings", "boots"}) {
+                alwaysEnabledArmor.add(ResourceLocation.fromNamespaceAndPath("mpsremodularized", family + "_" + piece + "_module"));
+            }
+        }
+        for (String piece : new String[]{"mask", "gown", "pants", "boots"}) {
+            alwaysEnabledArmor.add(ResourceLocation.fromNamespaceAndPath("mpsremodularized", "hazmat_" + piece + "_module"));
+        }
+        var alwaysEnabledFist = java.util.Set.of(
+                "mob_imprisonment_tool_module", "machine_settings_copier_module", "flux_configurator_module", "seismic_sensor_module",
+                "natures_compass_module", "explorers_compass_module", "configuration_card_module", "gauge_dropper_module",
+                "memory_card_module", "ender_memory_card_module", "remote_control_module", "remote_lever_module",
+                "remote_controller_module", "advanced_dominion_wand_module", "throughput_monitor_configurator_module",
+                "smart_wrench_module", "gps_compass_module", "engineers_multimeter_module", "manometer_module", "ae2_network_tool_module",
+                "smithing_table_module", "stonecutter_module", "anvil_module", "engineers_workbench_module",
+                "engineers_circuit_workbench_module", "tinkering_table_module", "brewing_stand_module", "pneumatic_remote_module",
+                "portable_qio_dashboard_module", "tunnel_bore", "vein_miner", "selective_miner", "railgun", "lux_capacitor_module");
         for (var entry : mpsremodularized.common.compat.IntermodModules.ENTRIES) {
             if (entry.kind() == mpsremodularized.common.compat.NativeModuleItem.Kind.GRENADE_LAUNCHER) {
                 expect(expected, entry.item().get(), stack -> new mpsremodularized.common.item.module.tool.misc.GascraftLauncherModule(stack).withMinimumTier(entry.tier()));
             } else if (entry.kind() == mpsremodularized.common.compat.NativeModuleItem.Kind.STATION) {
-                expect(expected, entry.item().get(), stack -> new mpsremodularized.common.item.module.tool.misc.PortableStationModule(stack).withMinimumTier(entry.tier()));
+                if (alwaysEnabledFist.contains(entry.id())) {
+                    expect(expected, entry.item().get(), stack -> new mpsremodularized.common.item.module.tool.misc.PortableStationModule(stack).withMinimumTier(entry.tier()));
+                } else {
+                    expect(expected, entry.item().get(), stack -> new mpsremodularized.common.item.module.tool.misc.PortableStationModule.Toggleable(stack).withMinimumTier(entry.tier()));
+                }
             } else if (entry.kind() == mpsremodularized.common.compat.NativeModuleItem.Kind.TOOL || entry.kind() == mpsremodularized.common.compat.NativeModuleItem.Kind.CONSTRUCTION_STICK) {
-                expect(expected, entry.item().get(), stack -> new mpsremodularized.common.item.module.tool.misc.NativeToolModule(stack).withMinimumTier(entry.tier()));
-            } else {
+                if (alwaysEnabledFist.contains(entry.id())) {
+                    expect(expected, entry.item().get(), stack -> new mpsremodularized.common.item.module.tool.misc.NativeToolModule(stack).withMinimumTier(entry.tier()));
+                } else {
+                    expect(expected, entry.item().get(), stack -> new mpsremodularized.common.item.module.tool.misc.NativeToolModule.Toggleable(stack).withMinimumTier(entry.tier()));
+                }
+            } else if (alwaysEnabledArmor.contains(BuiltInRegistries.ITEM.getKey(entry.item().get()))) {
                 expect(expected, entry.item().get(), stack -> new mpsremodularized.common.compat.IntermodModules.PassiveNativeModule(stack, entry.kind()).withMinimumTier(entry.tier()));
+            } else {
+                expect(expected, entry.item().get(), stack -> new mpsremodularized.common.compat.IntermodModules.ToggleableNativeModule(stack, entry.kind()).withMinimumTier(entry.tier()));
             }
         }
         expect(expected, MPSItems.SHOCK_MODULE.get(), stack -> new mpsremodularized.common.item.module.environmental.ShockModule.Capability(stack).withMinimumTier(4));
         expect(expected, MPSItems.BLOCK_REACH_MODULE.get(), stack -> new mpsremodularized.common.item.module.environmental.BlockReachModule.Capability(stack).withMinimumTier(4));
         check(definitions.size() == 161 && actualIds.equals(expected.keySet()), "Complete pre-registry provider matrix");
-        check(definitions.stream().filter(definition -> definition.isToggleable()).count() == 114, "114 user toggles; generators/coolant are automatic");
+        check(definitions.stream().filter(definition -> definition.isToggleable()).count() == 60, "60 user toggles; approved passive armor and Fist modes have no binding");
         int checks = 3;
         for (var definition : definitions) {
             Item item = definition.item().get();
@@ -186,6 +214,17 @@ final class ModuleRegistryValidation {
             check(actual.getTier() == baseline.getTier(), "Minimum tier: " + definition.id());
             check(actual.getTarget() == baseline.getTarget() && actual.getCategory() == baseline.getCategory(), "Target/category: " + definition.id());
             check(actual.isAllowed() == baseline.isAllowed(), "Allowed state: " + definition.id());
+            if (alwaysEnabledArmor.contains(definition.id()) || alwaysEnabledFist.contains(definition.id().getPath())) {
+                mpsremodularized.common.utils.TagUtils.setModuleIsOnline(stack, false);
+                check(!definition.isToggleable() && actual.isModuleOnline(), "Always-enabled module ignores a saved off state: " + definition.id());
+                checks++;
+            } else if (actual instanceof mpsremodularized.common.compat.IntermodModules.ToggleableNativeModule
+                    || actual instanceof mpsremodularized.common.item.module.tool.misc.NativeToolModule.Toggleable
+                    || actual instanceof mpsremodularized.common.item.module.tool.misc.PortableStationModule.Toggleable) {
+                mpsremodularized.common.utils.TagUtils.setModuleIsOnline(stack, false);
+                check(definition.isToggleable() && !actual.isModuleOnline(), "Other native toggles retain a saved off state: " + definition.id());
+                checks++;
+            }
             for (Class<?> capabilityInterface : new Class<?>[]{IToggleableModule.class, IPlayerTickModule.class,
                     IRightClickModule.class, IBlockBreakingModule.class, IHudModule.class}) {
                 check(definition.supports(capabilityInterface) == capabilityInterface.isInstance(baseline),

@@ -19,7 +19,11 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public final class PortableStationModule extends RightClickModule implements IToggleableModule {
+public class PortableStationModule extends RightClickModule {
+    public static final class Toggleable extends PortableStationModule implements IToggleableModule {
+        public Toggleable(ItemStack module) { super(module); }
+    }
+
     public PortableStationModule(ItemStack module) { super(module, ModuleCategory.TOOL, ModuleTarget.TOOLONLY); }
     @Override public boolean isAllowed() { return ((NativeModuleItem) getModule().getItem()).available(); }
     @Override public InteractionResultHolder<ItemStack> use(ItemStack fist, Level level, Player player, InteractionHand hand) {

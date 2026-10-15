@@ -4,7 +4,7 @@ import mpsremodularized.common.capabilities.module.blockbreaking.IBlockBreakingM
 import mpsremodularized.common.capabilities.module.powermodule.ModuleCategory;
 import mpsremodularized.common.capabilities.module.powermodule.ModuleTarget;
 import mpsremodularized.common.capabilities.module.rightclick.IRightClickModule;
-import mpsremodularized.common.capabilities.module.toggleable.ToggleableModule;
+import mpsremodularized.common.capabilities.module.rightclick.RightClickModule;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -23,7 +23,7 @@ import mpsremodularized.common.registration.MPSCapabilities;
 import mpsremodularized.common.capabilities.module.enchantment.IEnchantmentModule;
 import mpsremodularized.common.utils.ElectricItemUtils;
 
-public class MiningEnhancement extends ToggleableModule implements IRightClickModule, IMiningEnhancementModule {
+public class MiningEnhancement extends RightClickModule implements IRightClickModule, IMiningEnhancementModule {
     private static final ThreadLocal<Set<UUID>> HARVESTING = ThreadLocal.withInitial(HashSet::new);
 
     public static boolean isHarvesting(Player player) { return HARVESTING.get().contains(player.getUUID()); }

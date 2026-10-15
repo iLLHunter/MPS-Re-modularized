@@ -29,7 +29,7 @@ package mpsremodularized.common.item.module.tool.misc;
 import mpsremodularized.common.capabilities.module.powermodule.ModuleCategory;
 import mpsremodularized.common.capabilities.module.powermodule.ModuleTarget;
 import mpsremodularized.common.capabilities.module.rightclick.IRightClickModule;
-import mpsremodularized.common.capabilities.module.tickable.PlayerTickModule;
+import mpsremodularized.common.capabilities.module.tickable.PassivePlayerTickModule;
 import mpsremodularized.common.math.Color;
 import mpsremodularized.common.utils.ElectricItemUtils;
 import mpsremodularized.common.utils.HeatUtils;
@@ -48,7 +48,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 
 public class LuxCapacitorModule extends AbstractPowerModule {
-    public static class RightClickie extends PlayerTickModule implements IRightClickModule {
+    public static class RightClickie extends PassivePlayerTickModule implements IRightClickModule {
         public RightClickie(@Nonnull ItemStack module) {
             super(module, ModuleCategory.TOOL, ModuleTarget.TOOLONLY);
             addBaseProperty(MPSConstants.ENERGY_CONSUMPTION, ToolModuleConfig.luxCapacitorEnergyConsumptionBase, "FE");
@@ -71,16 +71,6 @@ public class LuxCapacitorModule extends AbstractPowerModule {
                 return true;
             }
             return false;
-        }
-
-        @Override
-        public ItemStack toggleModule(boolean online) {
-            return getModule();
-        }
-
-        @Override
-        public boolean isModuleOnline() {
-            return true;
         }
 
         @Override
