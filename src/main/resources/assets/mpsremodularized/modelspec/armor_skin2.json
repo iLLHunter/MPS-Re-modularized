@@ -1,0 +1,12 @@
+{
+  "modelSpec": {
+    "specName": "citizenjoe_armorskin",
+    "type": "ARMOR_SKIN",
+    "body": {
+      "texture": "mpsremodularized:textures/item/armor/joearmor.png"
+    },
+    "legs": {
+      "texture": "mpsremodularized:textures/item/armor/joearmorpants.png"
+    }
+  }
+}

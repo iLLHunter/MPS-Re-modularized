@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
+  "type": "mpsremodularized:crafting_native_module",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_3"
+    },
+    "D": {
+      "tag": "mpsremodularized:native_modules/ae2_network_tool_module"
+    },
+    "R": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_3"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    }
+  },
+  "pattern": [
+    "SRS",
+    "CD "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:ae2_network_tool_module"
+  }
+}

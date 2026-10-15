@@ -1,0 +1,31 @@
+{
+  "mod": "modern_industrialization",
+  "output_field": "item_outputs",
+  "recipe": {
+    "type": "modern_industrialization:assembler",
+    "duration": 200,
+    "eu": 8,
+    "item_inputs": [
+      {
+        "tag": "c:plates/iron",
+        "amount": 5
+      },
+      {
+        "item": "mpsremodularized:component_wiring_standard",
+        "amount": 1
+      }
+    ],
+    "item_outputs": [
+      {
+        "item": "mpsremodularized:component_plating_iron",
+        "amount": 1
+      }
+    ]
+  },
+  "required_tags": [
+    "c:plates/iron"
+  ],
+  "native_recipes": [
+    "mpsremodularized:component_plating_iron"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "values": [
+    "mpsremodularized:primitive_battery",
+    {
+      "id": "mekanism:basic_energy_cube",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:silicon_battery",
+      "required": false
+    },
+    {
+      "id": "oritech:basic_battery",
+      "required": false
+    },
+    {
+      "id": "powah:battery_blazing",
+      "required": false
+    }
+  ]
+}

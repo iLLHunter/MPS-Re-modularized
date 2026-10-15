@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "DD",
+    "WD",
+    "DD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_plating_diamond"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "pneumaticcraft:gps_tool",
+      "required": false
+    }
+  ]
+}

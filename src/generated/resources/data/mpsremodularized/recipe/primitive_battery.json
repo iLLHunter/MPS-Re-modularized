@@ -1,0 +1,28 @@
+{
+  "type": "mpsremodularized:crafting_energy_item",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_1"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "WRW",
+    "ICI",
+    "IWI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:primitive_battery"
+  }
+}

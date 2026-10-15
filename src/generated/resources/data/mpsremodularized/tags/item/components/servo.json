@@ -1,0 +1,13 @@
+{
+  "values": [
+    "mpsremodularized:component_servo",
+    {
+      "id": "modern_industrialization:motor",
+      "required": false
+    },
+    {
+      "id": "oritech:motor",
+      "required": false
+    }
+  ]
+}

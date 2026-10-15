@@ -1,0 +1,21 @@
+{
+  "values": [
+    "mpsremodularized:component_primitive_control_circuit",
+    {
+      "id": "mekanism:basic_control_circuit",
+      "required": false
+    },
+    {
+      "id": "ae2:printed_calculation_processor",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:analog_circuit",
+      "required": false
+    },
+    {
+      "id": "oritech:processing_unit",
+      "required": false
+    }
+  ]
+}

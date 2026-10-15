@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_2"
+    },
+    "L": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_1"
+    },
+    "O": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "R": {
+      "type": "mpsremodularized:component",
+      "component": "rubber_hose"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "WLW",
+    "OCO",
+    "WRW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:water_electrolyzer"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rubber": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mpsremodularized:recipe_inputs/compat/crafting/rubber_hose"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:compat/crafting/rubber_hose"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rubber"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:compat/crafting/rubber_hose"
+    ]
+  }
+}

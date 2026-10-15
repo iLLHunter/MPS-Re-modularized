@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 5,
+    "ingredient": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:primitive_power_armor_leggings"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:prototype_power_armor_leggings"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_2_smithing_upgrade"
+  }
+}

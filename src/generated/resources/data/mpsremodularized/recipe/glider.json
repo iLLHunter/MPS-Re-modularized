@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_3"
+    },
+    "G": {
+      "item": "mpsremodularized:component_glider_wing"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "servo"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "SWS",
+    "GCG",
+    "SWS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:glider"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "mod": "industrialforegoing",
+  "output_field": "output",
+  "recipe": {
+    "type": "industrialforegoing:dissolution_chamber",
+    "input": [
+      {
+        "item": "minecraft:magma_cream"
+      },
+      {
+        "item": "minecraft:magma_cream"
+      },
+      {
+        "item": "minecraft:magma_cream"
+      },
+      {
+        "tag": "c:ingots/iron"
+      },
+      {
+        "tag": "c:ingots/iron"
+      },
+      {
+        "tag": "c:ingots/iron"
+      },
+      {
+        "tag": "c:ingots/iron"
+      }
+    ],
+    "inputFluid": {
+      "fluid": "industrialforegoing:latex",
+      "amount": 500
+    },
+    "processingTime": 200,
+    "output": {
+      "id": "mpsremodularized:component_myofiber_gel",
+      "count": 2
+    }
+  },
+  "native_recipes": [
+    "mpsremodularized:component_myofiber_gel"
+  ]
+}

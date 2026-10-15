@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "advanced_ae:throughput_monitor_configurator",
+      "required": false
+    }
+  ]
+}

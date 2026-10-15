@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mysticalagradditions"
+    }
+  ],
+  "type": "mpsremodularized:crafting_native_module",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_3"
+    },
+    "D": {
+      "tag": "mpsremodularized:native_modules/mysticalagradditions_imperium_paxel_module"
+    },
+    "R": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_3"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    }
+  },
+  "pattern": [
+    "SRS",
+    "CD "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:mysticalagradditions_imperium_paxel_module"
+  }
+}

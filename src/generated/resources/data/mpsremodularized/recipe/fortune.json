@@ -1,0 +1,32 @@
+{
+  "type": "mpsremodularized:crafting_enchantment_item",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "E": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "N": {
+      "type": "mpsremodularized:min_enchanted",
+      "enchantments": {
+        "minecraft:fortune": 3
+      }
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "ENE",
+    "WCW",
+    "EEE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:fortune"
+  }
+}

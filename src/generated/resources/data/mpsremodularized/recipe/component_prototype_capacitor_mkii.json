@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "c:dusts/glowstone"
+    },
+    "E": {
+      "tag": "c:ender_pearls"
+    },
+    "G": {
+      "tag": "c:glass_panes"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "WGD",
+    "WEW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_prototype_capacitor_mkii"
+  }
+}

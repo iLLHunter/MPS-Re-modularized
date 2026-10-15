@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_hologram_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mpsremodularized:component_hologram_emitter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:binoculars"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_component_hologram_emitter"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:binoculars"
+    ]
+  }
+}

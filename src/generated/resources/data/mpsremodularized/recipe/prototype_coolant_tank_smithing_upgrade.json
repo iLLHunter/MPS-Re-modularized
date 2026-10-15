@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 2,
+    "ingredient": {
+      "tag": "c:ingots/gold"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:primitive_coolant_tank"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:prototype_coolant_tank"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_2_smithing_upgrade"
+  }
+}

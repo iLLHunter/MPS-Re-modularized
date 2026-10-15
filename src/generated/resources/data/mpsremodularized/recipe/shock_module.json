@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "item": "mpsremodularized:mob_repulsor"
+    },
+    "R": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "S": {
+      "item": "mpsremodularized:shock_coil"
+    },
+    "T": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    }
+  },
+  "pattern": [
+    "TST",
+    "RMR",
+    "TST"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:shock_module"
+  }
+}

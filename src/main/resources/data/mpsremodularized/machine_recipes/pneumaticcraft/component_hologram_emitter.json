@@ -1,0 +1,22 @@
+{
+  "mod": "pneumaticcraft",
+  "output_field": "result",
+  "recipe": {
+    "type": "pneumaticcraft:assembly_laser",
+    "input": {
+      "item": "mpsremodularized:unfinished_hologram_emitter",
+      "count": 1
+    },
+    "program": "laser",
+    "result": {
+      "id": "mpsremodularized:component_hologram_emitter",
+      "count": 1
+    }
+  },
+  "native_recipes": [
+    "mpsremodularized:component_hologram_emitter"
+  ],
+  "requires_any_recipe": [
+    "mpsremodularized:compat/machines/pneumaticcraft/prepare_hologram_emitter"
+  ]
+}

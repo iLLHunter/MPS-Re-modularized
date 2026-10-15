@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_2"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    " S ",
+    "WCW",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_servo"
+  }
+}

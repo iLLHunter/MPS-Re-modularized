@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:builtin/entity",
+  "flip_v": true,
+  "loader": "mpsremodularized:obj",
+  "model": "mpsremodularized:models/entity/obj/sphere.obj",
+  "textures": {
+    "particle": "mpsremodularized:block/white"
+  }
+}

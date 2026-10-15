@@ -1,0 +1,29 @@
+{
+  "mod": "immersiveengineering",
+  "output_field": "result",
+  "recipe": {
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "C",
+      "R",
+      "C"
+    ],
+    "key": {
+      "C": {
+        "tag": "c:ingots/copper"
+      },
+      "R": {
+        "tag": "c:dusts/redstone"
+      }
+    },
+    "result": {
+      "id": "mpsremodularized:component_wiring_template",
+      "count": 1
+    }
+  },
+  "requires_recipe": "mpsremodularized:compat/machines/immersiveengineering/press_wiring",
+  "required_tags": [
+    "c:plates/steel"
+  ]
+}

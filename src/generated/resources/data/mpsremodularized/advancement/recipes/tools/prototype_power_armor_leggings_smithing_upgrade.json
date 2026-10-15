@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:prototype_power_armor_leggings_smithing_upgrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tier_2_smithing_upgrade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mpsremodularized:tier_2_smithing_upgrade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tier_2_smithing_upgrade"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:prototype_power_armor_leggings_smithing_upgrade"
+    ]
+  }
+}

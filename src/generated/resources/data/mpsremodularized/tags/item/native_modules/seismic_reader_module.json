@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "mekanism:seismic_reader",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 2,
+    "ingredient": {
+      "tag": "c:gems/diamond"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:prototype_coolant_tank"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:prototype_coolant_tank_mkii"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_3_smithing_upgrade"
+  }
+}

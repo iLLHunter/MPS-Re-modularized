@@ -1,0 +1,21 @@
+{
+  "values": [
+    "mpsremodularized:component_prototype_control_circuit",
+    {
+      "id": "mekanism:advanced_control_circuit",
+      "required": false
+    },
+    {
+      "id": "ae2:printed_logic_processor",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:electronic_circuit",
+      "required": false
+    },
+    {
+      "id": "oritech:advanced_computing_engine",
+      "required": false
+    }
+  ]
+}

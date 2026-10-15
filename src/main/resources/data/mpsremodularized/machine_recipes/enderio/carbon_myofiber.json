@@ -1,0 +1,26 @@
+{
+  "mod": "enderio",
+  "output_field": "output",
+  "recipe": {
+    "type": "enderio:alloy_smelting",
+    "energy": 20000,
+    "experience": 0.1,
+    "inputs": [
+      {
+        "item": "minecraft:coal_block",
+        "count": 9
+      },
+      {
+        "item": "minecraft:paper",
+        "count": 1
+      }
+    ],
+    "output": {
+      "id": "mpsremodularized:component_carbon_myofiber",
+      "count": 1
+    }
+  },
+  "native_recipes": [
+    "mpsremodularized:component_carbon_myofiber"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "mod": "oritech",
+  "output_field": "results",
+  "recipe": {
+    "type": "oritech:assembler",
+    "time": 200,
+    "ingredients": [
+      {
+        "tag": "c:ingots/copper"
+      },
+      {
+        "tag": "c:ingots/copper"
+      },
+      {
+        "tag": "c:dusts/redstone"
+      },
+      {
+        "item": "oritech:polymer_resin"
+      }
+    ],
+    "results": [
+      {
+        "id": "mpsremodularized:component_wiring_standard",
+        "count": 16
+      }
+    ]
+  },
+  "required_items": [
+    "oritech:polymer_resin"
+  ],
+  "native_recipes": [
+    "mpsremodularized:component_wiring_standard"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_wiring_high_conductivity": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mpsremodularized:component_wiring_high_conductivity"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_gold_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:gold_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:tier_3_smithing_upgrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gold_ingot",
+      "has_component_wiring_high_conductivity"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:tier_3_smithing_upgrade"
+    ]
+  }
+}

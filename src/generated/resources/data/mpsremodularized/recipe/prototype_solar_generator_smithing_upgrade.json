@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 4,
+    "ingredient": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:primitive_solar_generator"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:prototype_solar_generator"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_2_smithing_upgrade"
+  }
+}

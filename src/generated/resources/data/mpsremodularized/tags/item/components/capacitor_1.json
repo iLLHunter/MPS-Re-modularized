@@ -1,0 +1,25 @@
+{
+  "values": [
+    "mpsremodularized:component_primitive_capacitor",
+    {
+      "id": "modern_industrialization:capacitor",
+      "required": false
+    },
+    {
+      "id": "pneumaticcraft:capacitor",
+      "required": false
+    },
+    {
+      "id": "enderio_evolution:capacitor_silver",
+      "required": false
+    },
+    {
+      "id": "enderio:basic_capacitor",
+      "required": false
+    },
+    {
+      "id": "powah:ender_gate_hardened",
+      "required": false
+    }
+  ]
+}

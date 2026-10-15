@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "rftoolsbase"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_donor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mpsremodularized:native_modules/smart_wrench_module"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:smart_wrench_module"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_donor"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:smart_wrench_module"
+    ]
+  }
+}

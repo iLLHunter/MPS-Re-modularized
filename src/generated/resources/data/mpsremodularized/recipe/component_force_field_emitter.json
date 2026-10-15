@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    }
+  },
+  "pattern": [
+    "SES",
+    "ESE",
+    "SES"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_force_field_emitter"
+  }
+}

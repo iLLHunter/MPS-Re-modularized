@@ -1,0 +1,31 @@
+# Gradle
+/.gradle
+/*/.gradle
+/build
+/*/build
+/runs
+/*/run
+/libs
+/research/
+/logs/
+__pycache__/
+
+# Generated resources are tracked; only NeoForge's incremental cache is local.
+/src/generated/resources/.cache
+
+# Eclipse
+.classpath
+.project
+/.settings
+/bin
+
+# IntelliJ
+/.idea
+*.iml
+*.ipr
+*.iws
+/out
+
+# Mac Stuff
+.DS_Store
+*.command

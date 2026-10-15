@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 1,
+    "ingredient": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:stone_shovel"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:iron_shovel"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_2_smithing_upgrade"
+  }
+}

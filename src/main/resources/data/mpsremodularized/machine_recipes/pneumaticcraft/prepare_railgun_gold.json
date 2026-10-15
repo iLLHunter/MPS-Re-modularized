@@ -1,0 +1,35 @@
+{
+  "mod": "pneumaticcraft",
+  "output_field": "result",
+  "recipe": {
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "GSG",
+      "SMS",
+      "CCC"
+    ],
+    "key": {
+      "G": {
+        "tag": "c:ingots/gold"
+      },
+      "S": {
+        "type": "mpsremodularized:component",
+        "component": "solenoid"
+      },
+      "M": {
+        "type": "mpsremodularized:component",
+        "component": "circuit_4"
+      },
+      "C": {
+        "item": "mpsremodularized:component_computer_chip"
+      }
+    },
+    "result": {
+      "id": "mpsremodularized:unfinished_railgun",
+      "count": 1
+    }
+  },
+  "requires_recipe": "mpsremodularized:compat/machines/pneumaticcraft/railgun",
+  "electrum": false
+}

@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "cyclic:lever_remote",
+      "required": false
+    }
+  ]
+}

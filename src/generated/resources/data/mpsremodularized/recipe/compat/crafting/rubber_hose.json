@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "type": "mpsremodularized:compatible_crafting",
+      "recipe": "rubber_hose"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "WWW",
+    "R R",
+    "WWW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_rubber_hose"
+  }
+}

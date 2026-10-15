@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:charcoal"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "WPI",
+    "WCW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_primitive_capacitor"
+  }
+}

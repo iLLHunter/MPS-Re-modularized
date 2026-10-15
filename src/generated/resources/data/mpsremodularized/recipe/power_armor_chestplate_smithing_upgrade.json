@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 5,
+    "ingredient": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:prototype_power_armor_chestplate_mkii"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:power_armor_chestplate"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_4_smithing_upgrade"
+  }
+}

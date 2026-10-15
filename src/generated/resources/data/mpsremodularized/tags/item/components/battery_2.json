@@ -1,0 +1,21 @@
+{
+  "values": [
+    "mpsremodularized:prototype_battery",
+    {
+      "id": "mekanism:advanced_energy_cube",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:sodium_battery",
+      "required": false
+    },
+    {
+      "id": "oritech:advanced_battery",
+      "required": false
+    },
+    {
+      "id": "powah:battery_niotic",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mpsremodularized:component_artificial_muscle"
+    },
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_2"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "SWS",
+    "WCW",
+    "SAS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:jump_assist"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "pneumaticcraft:seismic_sensor",
+      "required": false
+    }
+  ]
+}

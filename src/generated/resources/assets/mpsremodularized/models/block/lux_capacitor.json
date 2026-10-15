@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/block",
+  "flip_v": true,
+  "loader": "mpsremodularized:obj",
+  "model": "mpsremodularized:models/block/lux_capacitor/lux_capacitor.obj",
+  "textures": {
+    "particle": "neoforge:white"
+  }
+}

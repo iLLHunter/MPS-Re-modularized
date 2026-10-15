@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "G": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    },
+    "M": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_3"
+    },
+    "O": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "servo"
+    }
+  },
+  "pattern": [
+    "OCO",
+    "GMG",
+    "SGS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:selective_miner"
+  }
+}

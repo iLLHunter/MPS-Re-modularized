@@ -1,0 +1,36 @@
+{
+  "mod": "oritech",
+  "output_field": "results",
+  "recipe": {
+    "type": "oritech:assembler",
+    "time": 200,
+    "ingredients": [
+      {
+        "tag": "c:ingots/electrum"
+      },
+      {
+        "tag": "c:ingots/electrum"
+      },
+      {
+        "tag": "c:dusts/redstone"
+      },
+      {
+        "item": "oritech:polymer_resin"
+      }
+    ],
+    "results": [
+      {
+        "id": "mpsremodularized:component_wiring_high_conductivity",
+        "count": 16
+      }
+    ]
+  },
+  "required_items": [
+    "oritech:polymer_resin"
+  ],
+  "electrum": true,
+  "native_recipes": [
+    "mpsremodularized:component_wiring_high_conductivity",
+    "mpsremodularized:compat/fallback/high_conductivity_wire_gold"
+  ]
+}

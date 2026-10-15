@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_prototype_control_circuit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mpsremodularized:components/circuit_2"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:lux_capacitor_module"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_component_prototype_control_circuit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:lux_capacitor_module"
+    ]
+  }
+}

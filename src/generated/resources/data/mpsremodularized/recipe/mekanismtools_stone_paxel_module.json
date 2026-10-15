@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanismtools"
+    }
+  ],
+  "type": "mpsremodularized:crafting_native_module",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_1"
+    },
+    "D": {
+      "tag": "mpsremodularized:native_modules/mekanismtools_stone_paxel_module"
+    },
+    "R": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_1"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    }
+  },
+  "pattern": [
+    "SRS",
+    "CD "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:mekanismtools_stone_paxel_module"
+  }
+}

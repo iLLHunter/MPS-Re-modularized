@@ -1,0 +1,13 @@
+{
+  "modelSpec": {
+    "specName": "default_armorskin",
+    "type": "ARMOR_SKIN",
+    "default": true,
+    "body": {
+      "texture": "mpsremodularized:textures/item/armor/sebkarmor.png"
+    },
+    "legs": {
+      "texture": "mpsremodularized:textures/item/armor/sebkarmorpants.png"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mpsremodularized:component_artificial_muscle"
+    },
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "M": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_3"
+    },
+    "N": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "servo"
+    }
+  },
+  "pattern": [
+    "SNS",
+    "NMN",
+    "ACA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:sprint_assist"
+  }
+}

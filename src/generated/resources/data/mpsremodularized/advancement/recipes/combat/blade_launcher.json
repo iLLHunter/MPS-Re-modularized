@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_servo": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mpsremodularized:components/servo"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:blade_launcher"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_component_servo"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:blade_launcher"
+    ]
+  }
+}

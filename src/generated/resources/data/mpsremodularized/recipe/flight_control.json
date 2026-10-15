@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "O": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "CWC",
+    "WOW",
+    "CWC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:flight_control"
+  }
+}

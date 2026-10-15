@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "II",
+    "WI",
+    "II"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_plating_iron"
+  }
+}

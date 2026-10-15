@@ -1,0 +1,29 @@
+{
+  "mod": "immersiveengineering",
+  "output_field": "result",
+  "recipe": {
+    "type": "immersiveengineering:blueprint",
+    "category": "components",
+    "inputs": [
+      {
+        "basePredicate": {
+          "item": "immersiveengineering:wire_copper"
+        },
+        "count": 2
+      },
+      {
+        "tag": "c:dusts/redstone"
+      }
+    ],
+    "result": {
+      "id": "mpsremodularized:component_wiring_standard",
+      "count": 8
+    }
+  },
+  "required_items": [
+    "immersiveengineering:wire_copper"
+  ],
+  "native_recipes": [
+    "mpsremodularized:component_wiring_standard"
+  ]
+}

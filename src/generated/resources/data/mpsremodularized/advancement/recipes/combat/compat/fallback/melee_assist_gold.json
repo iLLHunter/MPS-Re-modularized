@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:tag_empty",
+      "tag": "c:ingots/electrum"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_force_field_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mpsremodularized:component_force_field_emitter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:compat/fallback/melee_assist_gold"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_component_force_field_emitter"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:compat/fallback/melee_assist_gold"
+    ]
+  }
+}

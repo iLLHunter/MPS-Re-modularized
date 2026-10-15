@@ -1,0 +1,47 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Development-only content stays in the private build repository, not public exports.
+/.github export-ignore
+/.editorconfig export-ignore
+/.gradle export-ignore
+/branding export-ignore
+/build export-ignore
+/docs export-ignore
+/logs export-ignore
+/research export-ignore
+/runs export-ignore
+/scripts export-ignore
+/testing export-ignore
+/tools export-ignore
+/TODO export-ignore
+/logo.png export-ignore
+/src/gameplayChecks export-ignore
+/src/powersuits export-ignore
+/src/generated/resources/.cache export-ignore
+/buildSrc/.gradle export-ignore
+/buildSrc/build export-ignore
+
+# Native evidence hashes identify the exact original bytes, including Windows
+# line endings. Preserve those bytes when staging and checking out the files.
+docs/testing-4.0.3/evidence/glfw-focus-*/** -text
+
+# Custom for Visual Studio
+*.cs     diff=csharp
+*.sln    merge=union
+*.csproj merge=union
+*.vbproj merge=union
+*.fsproj merge=union
+*.dbproj merge=union
+
+# Standard to msysgit
+*.doc	 diff=astextplain
+*.DOC	 diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot  diff=astextplain
+*.DOT  diff=astextplain
+*.pdf  diff=astextplain
+*.PDF	 diff=astextplain
+*.rtf	 diff=astextplain
+*.RTF	 diff=astextplain

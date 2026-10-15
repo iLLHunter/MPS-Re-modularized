@@ -1,0 +1,28 @@
+{
+  "mod": "immersiveengineering",
+  "output_field": "result",
+  "recipe": {
+    "type": "immersiveengineering:metal_press",
+    "energy": 20000,
+    "input": {
+      "basePredicate": {
+        "item": "minecraft:iron_ingot"
+      },
+      "count": 16
+    },
+    "mold": "mpsremodularized:component_mold",
+    "result": {
+      "id": "mpsremodularized:plating_iron",
+      "count": 1
+    }
+  },
+  "required_tags": [
+    "c:plates/steel"
+  ],
+  "native_recipes": [
+    "mpsremodularized:plating_iron"
+  ],
+  "requires_recipes": [
+    "mpsremodularized:compat/machines/immersiveengineering/prepare_component_mold"
+  ]
+}

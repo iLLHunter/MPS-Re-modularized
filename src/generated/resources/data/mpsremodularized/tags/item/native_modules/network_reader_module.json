@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "mekanism:network_reader",
+      "required": false
+    }
+  ]
+}

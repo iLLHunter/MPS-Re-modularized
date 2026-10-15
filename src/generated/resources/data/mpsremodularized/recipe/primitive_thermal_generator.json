@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "type": "mpsremodularized:component",
+      "component": "iron_plating"
+    },
+    "O": {
+      "tag": "c:ingots/copper"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "servo"
+    },
+    "W": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_1"
+    }
+  },
+  "pattern": [
+    "IOI",
+    "SWO",
+    "IOI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:primitive_thermal_generator"
+  }
+}

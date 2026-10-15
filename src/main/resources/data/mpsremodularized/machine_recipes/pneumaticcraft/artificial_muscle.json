@@ -1,0 +1,27 @@
+{
+  "mod": "pneumaticcraft",
+  "output_field": "results",
+  "recipe": {
+    "type": "pneumaticcraft:pressure_chamber",
+    "pressure": 4.0,
+    "inputs": [
+      {
+        "item": "mpsremodularized:component_carbon_myofiber",
+        "count": 8
+      },
+      {
+        "item": "mpsremodularized:component_myofiber_gel",
+        "count": 1
+      }
+    ],
+    "results": [
+      {
+        "id": "mpsremodularized:component_artificial_muscle",
+        "count": 1
+      }
+    ]
+  },
+  "native_recipes": [
+    "mpsremodularized:component_artificial_muscle"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "mod": "pneumaticcraft",
+  "output_field": "result",
+  "recipe": {
+    "type": "pneumaticcraft:assembly_laser",
+    "input": {
+      "item": "mpsremodularized:unfinished_plasma_cannon",
+      "count": 1
+    },
+    "program": "laser",
+    "result": {
+      "id": "mpsremodularized:plasma_cannon",
+      "count": 1
+    }
+  },
+  "native_recipes": [
+    "mpsremodularized:plasma_cannon",
+    "mpsremodularized:compat/fallback/plasma_cannon_gold"
+  ],
+  "requires_any_recipe": [
+    "mpsremodularized:compat/machines/pneumaticcraft/prepare_plasma_cannon",
+    "mpsremodularized:compat/machines/pneumaticcraft/prepare_plasma_cannon_gold"
+  ]
+}

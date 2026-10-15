@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_1"
+    },
+    "I": {
+      "tag": "c:ingots/copper"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "ICI",
+    "W W"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:primitive_power_armor_boots"
+  }
+}

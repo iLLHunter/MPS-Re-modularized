@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "constructionstick"
+    }
+  ],
+  "type": "mpsremodularized:crafting_native_module",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_1"
+    },
+    "D": {
+      "type": "mpsremodularized:battery_stick",
+      "base": {
+        "tag": "mpsremodularized:native_modules/copper_construction_stick_module"
+      }
+    },
+    "R": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_1"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    }
+  },
+  "pattern": [
+    "SRS",
+    "CD "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:copper_construction_stick_module"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "mod": "immersiveengineering",
+  "output_field": "result",
+  "recipe": {
+    "type": "immersiveengineering:blueprint",
+    "category": "components",
+    "inputs": [
+      {
+        "tag": "c:ingots/gold"
+      },
+      {
+        "tag": "c:dusts/redstone"
+      }
+    ],
+    "result": {
+      "id": "mpsremodularized:component_wiring_high_conductivity",
+      "count": 8
+    }
+  },
+  "electrum": false,
+  "required_items": [],
+  "native_recipes": [
+    "mpsremodularized:component_wiring_high_conductivity",
+    "mpsremodularized:compat/fallback/high_conductivity_wire_gold"
+  ]
+}

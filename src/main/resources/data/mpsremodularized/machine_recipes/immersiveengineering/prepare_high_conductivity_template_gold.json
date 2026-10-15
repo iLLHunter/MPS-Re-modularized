@@ -1,0 +1,30 @@
+{
+  "mod": "immersiveengineering",
+  "output_field": "result",
+  "recipe": {
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "C",
+      "R",
+      "C"
+    ],
+    "key": {
+      "C": {
+        "tag": "c:ingots/gold"
+      },
+      "R": {
+        "tag": "c:dusts/redstone"
+      }
+    },
+    "result": {
+      "id": "mpsremodularized:component_high_conductivity_wiring_template",
+      "count": 1
+    }
+  },
+  "requires_recipe": "mpsremodularized:compat/machines/immersiveengineering/press_high_conductivity_wiring",
+  "electrum": false,
+  "required_tags": [
+    "c:plates/steel"
+  ]
+}

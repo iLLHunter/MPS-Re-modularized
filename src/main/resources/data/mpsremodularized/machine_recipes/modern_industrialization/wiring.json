@@ -1,0 +1,31 @@
+{
+  "mod": "modern_industrialization",
+  "output_field": "item_outputs",
+  "recipe": {
+    "type": "modern_industrialization:assembler",
+    "duration": 200,
+    "eu": 8,
+    "item_inputs": [
+      {
+        "item": "modern_industrialization:copper_fine_wire",
+        "amount": 8
+      },
+      {
+        "tag": "c:dusts/redstone",
+        "amount": 1
+      }
+    ],
+    "item_outputs": [
+      {
+        "item": "mpsremodularized:component_wiring_standard",
+        "amount": 8
+      }
+    ]
+  },
+  "required_items": [
+    "modern_industrialization:copper_fine_wire"
+  ],
+  "native_recipes": [
+    "mpsremodularized:component_wiring_standard"
+  ]
+}

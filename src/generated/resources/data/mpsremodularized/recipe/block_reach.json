@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_4"
+    },
+    "D": {
+      "item": "minecraft:scaffolding"
+    },
+    "R": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "T": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    }
+  },
+  "pattern": [
+    "SRS",
+    "CDT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:block_reach"
+  }
+}

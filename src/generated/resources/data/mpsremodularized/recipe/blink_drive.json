@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "F": {
+      "item": "mpsremodularized:component_force_field_emitter"
+    },
+    "I": {
+      "type": "mpsremodularized:component",
+      "component": "ion_thruster"
+    },
+    "P": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "CIC",
+    "FPF",
+    "WIW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:blink_drive"
+  }
+}

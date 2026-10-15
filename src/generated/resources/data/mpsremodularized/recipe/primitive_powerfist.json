@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_1"
+    },
+    "I": {
+      "tag": "c:ingots/copper"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    " W ",
+    "WIC",
+    " IW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:primitive_powerfist"
+  }
+}

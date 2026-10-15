@@ -1,0 +1,29 @@
+{
+  "mod": "immersiveengineering",
+  "output_field": "result",
+  "recipe": {
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "WWW",
+      "III",
+      "WWW"
+    ],
+    "key": {
+      "W": {
+        "item": "mpsremodularized:component_wiring_standard"
+      },
+      "I": {
+        "tag": "c:ingots/iron"
+      }
+    },
+    "result": {
+      "id": "mpsremodularized:component_solenoid_template",
+      "count": 1
+    }
+  },
+  "requires_recipe": "mpsremodularized:compat/machines/immersiveengineering/press_solenoid",
+  "required_tags": [
+    "c:plates/steel"
+  ]
+}

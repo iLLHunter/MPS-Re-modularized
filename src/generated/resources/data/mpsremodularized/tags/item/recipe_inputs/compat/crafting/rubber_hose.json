@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "industrialforegoing:dryrubber",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:rubber_sheet",
+      "required": false
+    }
+  ]
+}

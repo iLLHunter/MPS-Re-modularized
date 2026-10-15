@@ -1,0 +1,26 @@
+{
+  "type": "mpsremodularized:crafting_energy_item",
+  "category": "misc",
+  "key": {
+    "B": {
+      "type": "mpsremodularized:component",
+      "component": "battery_3"
+    },
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "WBW",
+    "BCB",
+    "BWB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:battery"
+  }
+}

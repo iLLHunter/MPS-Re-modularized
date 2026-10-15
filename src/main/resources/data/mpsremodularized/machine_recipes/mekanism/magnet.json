@@ -1,0 +1,23 @@
+{
+  "mod": "mekanism",
+  "output_field": "output",
+  "recipe": {
+    "type": "mekanism:combining",
+    "main_input": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid",
+      "count": 3
+    },
+    "extra_input": {
+      "tag": "c:ingots/iron",
+      "count": 6
+    },
+    "output": {
+      "id": "mpsremodularized:component_magnet",
+      "count": 1
+    }
+  },
+  "native_recipes": [
+    "mpsremodularized:component_magnet"
+  ]
+}

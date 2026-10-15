@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_wiring_high_conductivity": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mpsremodularized:component_wiring_high_conductivity"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:component_prototype_control_circuit_mkii"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_component_wiring_high_conductivity"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:component_prototype_control_circuit_mkii"
+    ]
+  }
+}

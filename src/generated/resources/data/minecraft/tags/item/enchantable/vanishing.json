@@ -1,0 +1,20 @@
+{
+  "values": [
+    "mpsremodularized:primitive_power_armor_helmet",
+    "mpsremodularized:primitive_power_armor_chestplate",
+    "mpsremodularized:primitive_power_armor_leggings",
+    "mpsremodularized:primitive_power_armor_boots",
+    "mpsremodularized:prototype_power_armor_helmet",
+    "mpsremodularized:prototype_power_armor_chestplate",
+    "mpsremodularized:prototype_power_armor_leggings",
+    "mpsremodularized:prototype_power_armor_boots",
+    "mpsremodularized:prototype_power_armor_helmet_mkii",
+    "mpsremodularized:prototype_power_armor_chestplate_mkii",
+    "mpsremodularized:prototype_power_armor_leggings_mkii",
+    "mpsremodularized:prototype_power_armor_boots_mkii",
+    "mpsremodularized:power_armor_helmet",
+    "mpsremodularized:power_armor_chestplate",
+    "mpsremodularized:power_armor_leggings",
+    "mpsremodularized:power_armor_boots"
+  ]
+}

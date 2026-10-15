@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "type": "mpsremodularized:component",
+      "component": "battery_4",
+      "foreign_only": true
+    }
+  ],
+  "result": {
+    "components": {
+      "mpsremodularized:energy": 0
+    },
+    "count": 1,
+    "id": "mpsremodularized:battery"
+  }
+}

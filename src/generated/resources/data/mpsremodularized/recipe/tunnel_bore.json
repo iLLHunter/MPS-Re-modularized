@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_2"
+    },
+    "E": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "servo"
+    }
+  },
+  "pattern": [
+    "SES",
+    "ECE",
+    "SES"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:tunnel_bore"
+  }
+}

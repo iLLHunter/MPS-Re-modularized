@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "type": "mpsremodularized:component",
+      "component": "iron_plating"
+    },
+    {
+      "type": "mpsremodularized:component",
+      "component": "iron_plating"
+    },
+    {
+      "type": "mpsremodularized:component",
+      "component": "iron_plating"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:plating_iron"
+  }
+}

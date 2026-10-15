@@ -1,0 +1,30 @@
+{
+  "mod": "immersiveengineering",
+  "output_field": "result",
+  "recipe": {
+    "type": "immersiveengineering:metal_press",
+    "energy": 20000,
+    "input": {
+      "item": "mpsremodularized:component_high_conductivity_wiring_template"
+    },
+    "mold": "mpsremodularized:component_mold",
+    "result": {
+      "id": "mpsremodularized:component_wiring_high_conductivity",
+      "count": 16
+    }
+  },
+  "required_tags": [
+    "c:plates/steel"
+  ],
+  "native_recipes": [
+    "mpsremodularized:component_wiring_high_conductivity",
+    "mpsremodularized:compat/fallback/high_conductivity_wire_gold"
+  ],
+  "requires_recipes": [
+    "mpsremodularized:compat/machines/immersiveengineering/prepare_component_mold"
+  ],
+  "requires_any_recipe": [
+    "mpsremodularized:compat/machines/immersiveengineering/prepare_high_conductivity_template",
+    "mpsremodularized:compat/machines/immersiveengineering/prepare_high_conductivity_template_gold"
+  ]
+}

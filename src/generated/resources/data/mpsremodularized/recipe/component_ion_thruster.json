@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "mpsremodularized:component_force_field_emitter"
+    },
+    "G": {
+      "tag": "c:dusts/glowstone"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    " FS",
+    " IG",
+    "WFS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_ion_thruster"
+  }
+}

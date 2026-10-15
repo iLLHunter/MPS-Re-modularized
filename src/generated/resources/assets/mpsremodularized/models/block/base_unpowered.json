@@ -1,0 +1,65 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#particle"
+        },
+        "east": {
+          "texture": "#particle",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "north": {
+          "texture": "#particle",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "south": {
+          "texture": "#particle",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "up": {
+          "texture": "#particle"
+        },
+        "west": {
+          "texture": "#particle",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ]
+    }
+  ],
+  "textures": {
+    "particle": "mpsremodularized:block/base_unpowered"
+  }
+}

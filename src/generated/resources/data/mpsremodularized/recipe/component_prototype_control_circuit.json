@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_2"
+    },
+    "E": {
+      "tag": "c:ingots/copper"
+    },
+    "G": {
+      "tag": "c:dusts/glowstone"
+    },
+    "O": {
+      "item": "minecraft:red_dye"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "WCW",
+    "RGO",
+    "ERW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_prototype_control_circuit"
+  }
+}

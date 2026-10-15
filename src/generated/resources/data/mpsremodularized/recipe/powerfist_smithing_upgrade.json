@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 4,
+    "ingredient": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:prototype_powerfist_mkii"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:powerfist"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_4_smithing_upgrade"
+  }
+}

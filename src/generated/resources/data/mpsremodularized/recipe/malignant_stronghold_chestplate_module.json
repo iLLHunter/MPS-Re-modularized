@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "malum"
+    }
+  ],
+  "type": "mpsremodularized:crafting_native_module",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_4"
+    },
+    "D": {
+      "tag": "mpsremodularized:native_modules/malignant_stronghold_chestplate_module"
+    },
+    "R": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "T": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    }
+  },
+  "pattern": [
+    "SRS",
+    "CDT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:malignant_stronghold_chestplate_module"
+  }
+}

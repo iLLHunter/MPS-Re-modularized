@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "!": {
+      "tag": "c:dyes/green"
+    },
+    "#": {
+      "tag": "c:dusts/glowstone"
+    },
+    "&": {
+      "tag": "c:dyes/red"
+    },
+    "@": {
+      "tag": "c:dyes/blue"
+    },
+    "G": {
+      "tag": "c:glass_blocks"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "#G!",
+    "GWG",
+    "@G&"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_hologram_emitter"
+  }
+}

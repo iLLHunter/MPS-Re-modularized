@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "cyclic:compass_gps",
+      "required": false
+    }
+  ]
+}

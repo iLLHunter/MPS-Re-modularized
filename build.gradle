@@ -1,0 +1,641 @@
+import com.modrinth.minotaur.TaskModrinthUpload
+import com.modrinth.minotaur.dependencies.ModDependency
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+import org.gradle.buildconfiguration.tasks.UpdateDaemonJvm
+
+import java.util.function.Consumer
+
+plugins {
+    id('org.ajoberstar.grgit.service')//Version declared in buildSrc
+    id('net.darkhax.curseforgegradle').version('1.1.28')
+    id('com.modrinth.minotaur').version('2.8.10')
+    id('java')
+    id('eclipse')
+    id('idea')
+    id('maven-publish')
+    id('net.neoforged.moddev').version('2.0.107')//https://projects.neoforged.net/neoforged/moddevgradle
+}
+
+tasks.named('wrapper', Wrapper).configure {
+    //Define wrapper values here so as to not have to always do so when updating gradlew.properties
+    gradleVersion = '9.0'
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+tasks.named('updateDaemonJvm', UpdateDaemonJvm) {
+    languageVersion = JavaLanguageVersion.of("${java_version}")
+}
+
+defaultTasks('build')
+
+idea {
+    module {
+        //Exclude directories from being managed
+        for (String excludeDirName : ['runs', 'out', 'logs', 'gradle']) {
+            excludeDirs.add(file(excludeDirName))
+        }
+        //Tell IDEA to always download sources/javadoc artifacts from maven.
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+sourceSets {
+    main {
+        resources {
+            include '**/**'
+            //Add the generated main module resources
+            srcDirs += ['src/generated/resources']
+            //But exclude the cache of the generated data from what gets built
+            exclude '.cache'
+        }
+    }
+
+
+    // These source-sets only exist for the sake of assembling a dependency graph
+    // for IntelliJ. Each of these will become an IntelliJ module when the project is imported,
+    // and will be set as the "main module" for the IntelliJ runs. A compile dependency
+    // on the other source sets is enough, since runtime classpath is managed by MDG anyway.
+    runMain {
+        runtimeClasspath += main.runtimeClasspath
+        compileClasspath += main.output
+    }
+
+    runData {
+        compileClasspath += runMain.compileClasspath
+        runtimeClasspath += runMain.runtimeClasspath
+    }
+
+
+}
+
+configurations {
+    datagenNonMod
+    localRuntime
+}
+
+// A single datagen implementation is loaded only by the data run.
+sourceSets.main.runtimeClasspath += configurations.localRuntime
+sourceSets.runMain.runtimeClasspath += sourceSets.main.runtimeClasspath
+sourceSets {
+    datagen {
+        java.srcDirs = ['src/datagen/java']
+        resources.srcDirs = []
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath
+    }
+    gameplayChecks {
+        java.srcDirs = ['src/gameplayChecks/java']
+        resources.srcDirs = ['src/gameplayChecks/resources']
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath
+    }
+    // Clean client profiles loading the built release JAR, never main classes or test mods.
+    packagedClient {
+        java.srcDirs = []
+        resources.srcDirs = []
+    }
+}
+configurations {
+    datagenImplementation.extendsFrom implementation, datagenNonMod
+    datagenCompileOnly.extendsFrom compileOnly
+    datagenRuntimeOnly.extendsFrom runtimeOnly
+    gameplayChecksImplementation.extendsFrom implementation
+    gameplayChecksCompileOnly.extendsFrom compileOnly
+    gameplayChecksRuntimeOnly.extendsFrom runtimeOnly
+}
+sourceSets.runData.compileClasspath += sourceSets.datagen.output
+sourceSets.runData.runtimeClasspath += sourceSets.datagen.runtimeClasspath
+
+sourceSets {
+    energyModuleChecks {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath
+    }
+}
+
+def verifyEnergyModules = tasks.register('verifyEnergyModules', JavaExec) {
+    group = 'verification'
+    description = 'Checks generator resource accounting and tier defaults without launching Minecraft.'
+    dependsOn(tasks.named('energyModuleChecksClasses'))
+    classpath = sourceSets.energyModuleChecks.runtimeClasspath
+    mainClass = 'mpsremodularized.common.item.module.energygeneration.heat.EnergyModuleRegressionTest'
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    workingDir = projectDir
+}
+tasks.named('check') {
+    dependsOn(verifyEnergyModules)
+}
+
+def verifyChargingEnergy = tasks.register('verifyChargingEnergy', JavaExec) {
+    group = 'verification'
+    description = 'Checks charging transfer conservation, storage totals and simulation behavior.'
+    dependsOn(tasks.named('energyModuleChecksClasses'))
+    classpath = sourceSets.energyModuleChecks.runtimeClasspath
+    mainClass = 'mpsremodularized.common.capabilities.energy.ChargingEnergyRegressionTest'
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    workingDir = projectDir
+}
+tasks.named('check') {
+    dependsOn(verifyChargingEnergy)
+}
+
+def verifyConfigLayout = tasks.register('verifyConfigLayout', JavaExec) {
+    group = 'verification'
+    description = 'Checks config locations and consolidated common settings without launching Minecraft.'
+    dependsOn(tasks.named('energyModuleChecksClasses'))
+    classpath = sourceSets.energyModuleChecks.runtimeClasspath
+    mainClass = 'mpsremodularized.common.config.ConfigLayoutRegressionTest'
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    workingDir = projectDir
+}
+tasks.named('check') {
+    dependsOn(verifyConfigLayout)
+}
+
+def verifyModuleRegistry = tasks.register('verifyModuleRegistry', JavaExec) {
+    group = 'verification'
+    description = 'Checks capability-free module discovery, registry invariants, and tier application.'
+    dependsOn(tasks.named('energyModuleChecksClasses'))
+    classpath = sourceSets.energyModuleChecks.runtimeClasspath
+    mainClass = 'mpsremodularized.common.registration.ModuleRegistryRegressionTest'
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    workingDir = projectDir
+}
+tasks.named('check') {
+    dependsOn(verifyModuleRegistry)
+}
+
+def verifyKeybindSettings = tasks.register('verifyKeybindSettings', JavaExec) {
+    group = 'verification'
+    description = 'Checks early keybind discovery and in-place restoration of saved module bindings.'
+    dependsOn(tasks.named('energyModuleChecksClasses'))
+    classpath = sourceSets.energyModuleChecks.runtimeClasspath
+    mainClass = 'mpsremodularized.client.control.KeybindSettingsRegressionTest'
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    workingDir = projectDir
+}
+tasks.named('check') {
+    dependsOn(verifyKeybindSettings)
+}
+
+//Setup the UPDATE_SOURCESET property in case we are doing any remappings
+def verifyVisionHud = tasks.register('verifyVisionHud', JavaExec) {
+    group = 'verification'
+    description = 'Checks clock rollover and safe FOV composition without launching Minecraft.'
+    dependsOn(tasks.named('energyModuleChecksClasses'))
+    classpath = sourceSets.energyModuleChecks.runtimeClasspath
+    mainClass = 'mpsremodularized.client.overlay.VisionHudRegressionTest'
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    workingDir = projectDir
+}
+tasks.named('check') { dependsOn(verifyVisionHud) }
+
+def verifyInstallationInventory = tasks.register('verifyInstallationInventory', JavaExec) {
+    group = 'verification'
+    description = 'Checks module inventory paging, visible slots, and wheel navigation without launching Minecraft.'
+    dependsOn(tasks.named('energyModuleChecksClasses'))
+    classpath = sourceSets.energyModuleChecks.runtimeClasspath
+    mainClass = 'mpsremodularized.client.gui.frame.InventoryFrameRegressionTest'
+    javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    workingDir = projectDir
+}
+tasks.named('check') { dependsOn(verifyInstallationInventory) }
+
+//project.ext."UPDATE_SOURCESETS" = project.sourceSets.collect { it.name }.join(';')
+
+setupTasks(sourceSets.main)
+
+def setupTasks(SourceSet sourceSet) {
+    def compileTask = tasks.named(sourceSet.compileJavaTaskName, JavaCompile) {
+        //Configure specific compile tasks to have the proper annotation processor info
+        setGroup('compile')
+    }
+
+    //Set the various variables/settings for the different process resources tasks
+    tasks.named(sourceSet.processResourcesTaskName, ProcessResources) {
+        setGroup('process resources')
+        duplicatesStrategy = DuplicatesStrategy.FAIL
+        var versionProperties = [
+                //'file' : ['jarVersion': mod_version],
+                'minecraft_version'      : minecraft_version,
+                'minecraft_version_range': minecraft_version_range,
+                'mc_version': minecraft_version_range,
+                'neo_version': neo_version_range,
+                'loader_version_range': loader_version_range,
+                neo_version_range      : neo_version_range,
+                mod_version            : mod_version,
+                mod_license            : mod_license
+        ]
+
+        //Mark the properties as inputs so that when they change things update
+        inputs.properties(versionProperties)
+        filesMatching('META-INF/neoforge.mods.toml') { expand(versionProperties) }
+        //Depend on the compile task so that we can map the computer methods as needed
+        dependsOn(compileTask)
+        def files = fileTree(dir: outputs.files.asPath, includes: ['**/*.json', '**/*.mcmeta'])
+        doLast {
+            for (def file : files) {
+                file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
+            }
+        }
+    }
+    tasks.named(sourceSet.compileJavaTaskName, JavaCompile) { setGroup('compile') }
+}
+
+group = group_id
+version = "${minecraft_version}-${mod_version}"
+project.base.archivesName = 'MPS-Re-modularized'
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of("${java_version}"))
+        vendor.set(JvmVendorSpec.JETBRAINS)
+    }
+}
+
+final runsFolder = layout.projectDirectory.dir('runs')
+final clientRunsFolder = runsFolder.dir("client-${mod_version}")
+
+neoForge {
+    // This enables modding tasks and configurations
+    enable {
+        version = neo_forge_version
+        enabledSourceSets = sourceSets // All source sets use Minecraft code
+    }
+
+    mods {
+        mps {
+            sourceSet((SourceSet) sourceSets.main)
+        }
+        mpsData {
+            modSourceSets = mods.mps.modSourceSets
+            sourceSet((SourceSet) sourceSets.datagen)
+        }
+        mpsGameplayChecks {
+            modSourceSets = mods.mps.modSourceSets
+            sourceSet((SourceSet) sourceSets.gameplayChecks)
+        }
+    }
+
+    accessTransformers = ['src/main/resources/META-INF/accesstransformer.cfg']
+
+    runs {
+        configureEach {
+            if (project.hasProperty('forge_force_ansi')) {
+                //Force ansi if declared as a gradle variable, as the auto detection doesn't detect IntelliJ properly
+                // or eclipse's plugin that adds support for ansi escape in console
+                systemProperties.put('terminal.ansi', (String) property('forge_force_ansi'))
+            }
+
+            loadedMods = [mods.mps]
+
+            //if the selected toolchain is a JBR, enable DCEVM
+            if (javaToolchains.launcherFor(java.toolchain).map { it.metadata.vendor }.getOrElse('').contains('JetBrains')) {
+                jvmArguments.addAll('-XX:+IgnoreUnrecognizedVMOptions', '-XX:+AllowEnhancedClassRedefinition')
+            }
+
+            // Uncomment this to get verbose debug logging
+            // logLevel = org.slf4j.event.Level.DEBUG
+
+            sourceSet = sourceSets.runMain
+        }
+        //Note: To enable logging into the client account, set the mc_devlogin property to true in your gradle user home
+        // You can also run gradlew runClient -Pmc_devlogin=true
+        client {
+            client()
+            gameDirectory.value(clientRunsFolder)
+            if (findProperty('mc_devlogin') ?: false) {
+                devLogin = true
+            }
+        }
+        clientAlt {
+            client()
+            gameDirectory.value(runsFolder.dir("clientAlt-${mod_version}"))
+            // Force dev login to be disabled for this run to allow using a secondary username
+            devLogin = false
+            programArguments.addAll('--username', 'AltDev')
+        }
+        packagedClient {
+            client()
+            sourceSet = sourceSets.packagedClient
+            loadedMods = []
+            gameDirectory.value(runsFolder.dir("packaged-client-a-${mod_version}"))
+            devLogin = false
+            programArguments.addAll('--username', 'PackageA')
+            jvmArguments.add('-Xmx2G')
+            if (project.hasProperty('testServer')) programArguments.addAll('--quickPlayMultiplayer', '127.0.0.1:25586')
+        }
+        packagedClientAlt {
+            client()
+            sourceSet = sourceSets.packagedClient
+            loadedMods = []
+            gameDirectory.value(runsFolder.dir("packaged-client-b-${mod_version}"))
+            devLogin = false
+            programArguments.addAll('--username', 'PackageB')
+            jvmArguments.add('-Xmx2G')
+            if (project.hasProperty('testServer')) programArguments.addAll('--quickPlayMultiplayer', '127.0.0.1:25586')
+        }
+        packagedModpack {
+            client()
+            sourceSet = sourceSets.packagedClient
+            loadedMods = []
+            gameDirectory.value(runsFolder.dir("p13-ftb-evolution-${mod_version}"))
+            devLogin = false
+            programArguments.addAll('--username', 'PackTest', '--quickPlaySingleplayer', 'Codex MPS 4_0_3 Test')
+            jvmArguments.add('-Xmx8G')
+        }
+        server {
+            server()
+            gameDirectory.value(runsFolder.dir("server-${mod_version}"))
+        }
+        gameplayReview {
+            type = 'gameTestServer'
+            gameDirectory.value(runsFolder.dir("gameplay-review-${mod_version}"))
+            if (project.hasProperty('gameplayProfile')) {
+                gameDirectory.value(runsFolder.dir("gameplay-review-${mod_version}/${project.property('gameplayProfile')}"))
+            }
+            sourceSet = sourceSets.gameplayChecks
+            loadedMods = [mods.mpsGameplayChecks]
+            systemProperties.put('neoforge.enabledGameTestNamespaces', project.findProperty('gameplayTestNamespaces') ?: 'mpsremodularized')
+            if (project.hasProperty('compatibilityProfile')) {
+                gameDirectory.value(runsFolder.dir("compatibility-${mod_version}/${project.property('compatibilityProfile')}"))
+                systemProperties.put('neoforge.enabledGameTestNamespaces', 'mpscompatibility')
+                if (project.hasProperty('machineCompatibilityTests')) {
+                    systemProperties.put('neoforge.enabledGameTestNamespaces', 'mpsmachines')
+                    systemProperties.put('mps.machineFixture', project.property('compatibilityProfile'))
+                }
+            }
+        }
+        data {
+            data()
+            gameDirectory.value(runsFolder.dir('data'))
+            if (project.hasProperty('itemNamingAudit')) {
+                systemProperties.put('mps.itemNamingAudit', file('build/reports/item-naming/registered-items.json').absolutePath)
+            }
+            if (project.hasProperty('consolidationSnapshot') || project.hasProperty('consolidationPass2Snapshot')
+                    || project.hasProperty('consolidationPass3Snapshot') || project.hasProperty('prePass4Snapshot')
+                    || project.hasProperty('consolidationPass4Snapshot') || project.hasProperty('prePass5FixesSnapshot')
+                    || project.hasProperty('prePass5RemainingFixesSnapshot') || project.hasProperty('consolidationPass5Snapshot')
+                    || project.hasProperty('worldTestingFixes1Snapshot') || project.hasProperty('release401Snapshot')
+                    || project.hasProperty('release402Snapshot') || project.hasProperty('release402BalanceSnapshot')
+                    || project.hasProperty('release402TeleportSnapshot')) {
+                throw new GradleException('Earlier snapshots are frozen. Use -Prelease403Snapshot for the current capture.')
+            }
+            if (project.hasProperty('release403Snapshot')) {
+                gameDirectory.value(runsFolder.dir('data-4.0.3'))
+                systemProperties.put('mps.consolidationSnapshot', file('docs/validation-4.0.3/runtime-release-4.0.3.json').absolutePath)
+                systemProperties.put('mps.consolidationStage', 'release-4.0.3')
+            }
+            programArguments.addAll('--all', '--flat', '--output', file('src/generated/resources').absolutePath,
+                    '--mod', 'mpsremodularized', '--existing', file('src/main/resources').absolutePath)
+            sourceSet = sourceSets.runData
+            loadedMods = [mods.mpsData]
+
+        }
+    }
+}
+
+// Export the exact prepared launch for a frozen Windows client; no JAR build.
+tasks.register('exportPackagedClientLaunchSpecs') {
+    dependsOn('preparePackagedClientRun', 'preparePackagedClientAltRun')
+    doLast {
+        ['packagedClient', 'packagedClientAlt'].each { name ->
+            def run = tasks.named('run' + name.capitalize(), JavaExec).get()
+            def spec = [java: run.javaLauncher.get().executablePath.asFile.absolutePath,
+                        workingDirectory: run.gameDirectory.get().asFile.absolutePath,
+                        jvmArgs: run.allJvmArgs, classpath: run.classpathProvider.asPath,
+                        mainClass: run.mainClass.get(), args: run.args,
+                        environment: run.environmentProperty.get()]
+            file("build/moddev/${name}DirectLaunch.json").text =
+                    groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(spec)) + '\n'
+        }
+    }
+}
+
+// Ensure any jar without the necessary FML manifest attributes gets picked up via legacy classpath.
+// This configuration only exists after setting the neoForge version above.
+configurations.dataAdditionalRuntimeClasspath.extendsFrom configurations.datagenNonMod
+
+
+static void exclusiveRepo(RepositoryHandler handler, String url, Consumer<InclusiveRepositoryContentDescriptor> filterSetup) {
+    handler.exclusiveContent {
+        it.forRepositories(handler.maven {
+            setUrl(url)
+        })
+        it.filter { f -> filterSetup.accept(f) }
+    }
+}
+
+repositories {
+    RepositoryHandler handler ->
+//        exclusiveRepo(handler, 'https://maven.blamejared.com', filter -> {
+//            filter.includeGroup('org.openzen.zencode')
+//        })
+        gradlePluginPortal()
+        mavenLocal()
+        maven {
+            name = 'BlameJared'
+            url = 'https://maven.blamejared.com'
+            content {
+                includeGroup('mezz.jei')
+            }
+        }
+        flatDir {
+            dirs("${project.rootDir}/libs")
+        }
+}
+
+dependencies {
+    if (!project.hasProperty('testModpack')) {
+        packagedClientRuntimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    }
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
+    // Load any extra compatibility mods a developer chooses to place in libs/.
+    localRuntime fileTree(dir: 'libs', include: ['*.jar'])
+    if (project.hasProperty('compatibilityModsDir')) {
+        localRuntime fileTree(dir: project.property('compatibilityModsDir'), include: ['*.jar'])
+    }
+}
+
+// Keep active clients independent of subsequent builds replacing build/libs/*.jar.
+['PackagedClient': 'packaged-client-a', 'PackagedClientAlt': 'packaged-client-b'].each { runName, folder ->
+    def installer = tasks.register("install${runName}Artifact") {
+        group = 'verification'
+        description = 'Copies a frozen release JAR into this disposable client before launch. Close this profile before replacing its artifact.'
+        dependsOn(tasks.named('jar'))
+        doLast {
+            def source = tasks.named('jar', Jar).get().archiveFile.get().asFile
+            def profile = file("runs/${folder}-${mod_version}")
+            def destination = new File(profile, "mods/${source.name}")
+            profile.mkdirs()
+            def options = new File(profile, 'options.txt')
+            def lines = options.exists() ? options.readLines('UTF-8') : ['renderDistance:8', 'simulationDistance:5', 'maxFps:60', 'guiScale:2']
+            lines.removeAll { it.startsWith('version:') || it.startsWith('soundCategory_music:') || it.startsWith('onboardAccessibility:') }
+            options.setText((['version:3955', 'soundCategory_music:0.15', 'onboardAccessibility:false'] + lines).join('\n') + '\n', 'UTF-8')
+            if (destination.exists() && Arrays.equals(destination.bytes, source.bytes)) return
+            if (destination.exists()) {
+                def hash = java.security.MessageDigest.getInstance('SHA-256').digest(destination.bytes).encodeHex().toString()
+                def history = new File(profile, "artifact-history/${source.name}-${hash.take(12)}")
+                history.parentFile.mkdirs()
+                if (history.exists()) {
+                    if (!Arrays.equals(history.bytes, destination.bytes)) throw new GradleException('Frozen artifact history differs')
+                } else java.nio.file.Files.copy(destination.toPath(), history.toPath())
+            }
+            destination.parentFile.mkdirs()
+            java.nio.file.Files.copy(source.toPath(), destination.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+        }
+    }
+    tasks.matching { it.name == "run${runName}" }.configureEach { dependsOn(installer) }
+}
+
+def getManifestAttributes(String title, String artifactVersion) {
+    return [
+            'Specification-Title'     : title,
+            'Specification-Vendor'    : 'MPS Re-modularized',
+            'Specification-Version'   : artifactVersion,
+            'Implementation-Title'    : title,
+            'Implementation-Version'  : artifactVersion,
+            'Implementation-Vendor'   : 'MPS Re-modularized',
+            'Automatic-Module-Name'   : 'mpsremodularized'
+    ]
+}
+
+tasks.named('jar', Jar) {
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+    manifest.attributes(getManifestAttributes('MPS Re-modularized', "${mod_version}"))
+}
+
+tasks.withType(JavaCompile).configureEach({
+    options.encoding = 'UTF-8'
+    options.compilerArgs.addAll(['-Xmaxerrs', '100000', '-Xlint:deprecation'])
+})
+
+tasks.withType(Javadoc).configureEach({
+    options.encoding = 'UTF-8'
+})
+
+artifacts {
+    archives jar
+}
+
+tasks.register('optimizePng', OptimizePng) {
+    def pngPatterns = ['**/*.png']
+    // Includes the logo in src/main/resources and generated sprites.
+    def pngSourceSets = [sourceSets.main]
+    for (def sourceSet : pngSourceSets) {
+        for (def dir : sourceSet.resources.srcDirs) {
+            inputFiles.from(fileTree(dir: dir, includes: pngPatterns))
+        }
+    }
+    //TODO: Make optimize png be fully compatible with the configuration cache?
+    notCompatibleWithConfigurationCache('Up to date check is not currently compatible with the configuration cache')
+    outputs.upToDateWhen {
+        //Validate that none of the files has changed size, as the odds that a file has the exact same size and has changed is very low for an image file
+        //Note: This is from Chat-GPT, I don't understand why the any check isn't just always true (and thus this being different from returning always false)
+        // but it seems to function properly(?), whereas just always returning false does not
+        !inputFiles.files.any { file -> file.length() != file.size() }
+    }
+}
+
+def outputChangelog = tasks.register('outputChangelog', OutputChangelog, grgitService.service)
+outputChangelog.configure { OutputChangelog out ->
+    out.releaseNotes.value(provider {
+        //If we have a file specified that exists for the mod version, then we want to use it
+        // otherwise we want to fall back to not having the value set
+        def file = layout.projectDirectory.file("docs/release_${mod_version}.md")
+        return file.asFile.exists() ? file : null
+    })
+}
+Provider<RegularFile> changelogFile = outputChangelog.<RegularFile>flatMap(c -> c.outputFile)
+
+// Release uploads require explicit destinations for this fork and an explicit opt-in.
+// No build/check task invokes publishing, and neither upload chains to another artifact.
+def releaseUploadsEnabled = providers.gradleProperty('enableReleaseUploads').map { it.toBoolean() }.getOrElse(false)
+def curseProject = providers.gradleProperty('mpsCurseforgeProjectId')
+def curseToken = providers.environmentVariable('CURSEFORGE_KEY').orElse(providers.gradleProperty('curseforgeKey'))
+def modrinthProject = providers.gradleProperty('mpsModrinthProjectId')
+def modrinthToken = providers.environmentVariable('MODRINTH_TOKEN').orElse(providers.gradleProperty('modrinthToken'))
+
+tasks.register('curseforge', TaskPublishCurseForge) { task ->
+    group = 'publishing'
+    description = 'Upload the single MPS Re-modularized artifact to its configured CurseForge project.'
+    enabled = releaseUploadsEnabled && curseProject.isPresent() && curseToken.isPresent()
+    dependsOn(tasks.named('jar'), outputChangelog)
+    disableVersionDetection()
+    if (curseProject.isPresent()) {
+        apiToken = curseToken.getOrElse('')
+        task.upload(Long.parseLong(curseProject.get()), tasks.named('jar')) { artifact ->
+            artifact.displayName = "MPS Re-modularized ${mod_version} for ${minecraft_version}"
+            artifact.changelog = changelogFile
+            artifact.changelogType = 'markdown'
+            artifact.releaseType = release_type
+            artifact.addModLoader('NeoForge')
+            artifact.addJavaVersion("Java ${java_version}")
+            artifact.addGameVersion(minecraft_version)
+            artifact.addOptional('jei', 'applied-energistics-2', 'scannable')
+        }
+    }
+}
+
+modrinth {
+    if (modrinthProject.isPresent()) projectId = modrinthProject.get()
+    token = modrinthToken.getOrElse('')
+    versionNumber = mod_version
+    versionName = "MPS Re-modularized ${mod_version} for ${minecraft_version}"
+    versionType = release_type
+    gameVersions = [minecraft_version]
+    loaders = ['neoforge']
+    detectLoaders = false
+    failSilently = false
+    changelog.value(changelogFile.map { it.asFile.text })
+    uploadFile = tasks.named('jar')
+    dependencies.value([new ModDependency('jei', 'optional'),
+                        new ModDependency('ae2', 'optional'), new ModDependency('scannable', 'optional')])
+}
+tasks.named('modrinth', TaskModrinthUpload) {
+    enabled = releaseUploadsEnabled && modrinthProject.isPresent() && modrinthToken.isPresent()
+    dependsOn(tasks.named('jar'), outputChangelog)
+    notCompatibleWithConfigurationCache('The publishing plugin does not support the configuration cache.')
+}
+
+def verifyReleaseLayout = tasks.register('verifyReleaseLayout') {
+    group = 'verification'
+    description = 'Checks the single MPS artifact and reports publishing configuration without uploading.'
+    dependsOn(tasks.named('jar'), outputChangelog)
+    def reportFile = layout.buildDirectory.file('reports/consolidation/release-layout.json')
+    outputs.file(reportFile)
+    // Evaluate actual task wiring on every run, including changes to external publishing properties.
+    outputs.upToDateWhen { false }
+    def runtimeJar = tasks.named('jar', Jar).get().archiveFile.get().asFile
+    def archiveFiles = configurations.archives.artifacts.files
+    def expectedVersion = "${minecraft_version}-${mod_version}".toString()
+    def secondaryTasks = tasks.names.findAll { it.toLowerCase().startsWith('powersuits') }
+    def changelogProvider = changelogFile
+    def report = [group: project.group.toString(), version: project.version.toString(), artifact: runtimeJar.name,
+                  sourceSets: sourceSets.names.sort(), archiveArtifacts: [runtimeJar.name],
+                  curseforgeUploadEnabled: tasks.named('curseforge').get().enabled,
+                  modrinthUploadEnabled: tasks.named('modrinth').get().enabled,
+                  releaseType: release_type.toString(), separateLibraryArtifact: false]
+    inputs.properties(report)
+    doLast {
+        assert report.group == 'mpsremodularized'
+        assert report.version == expectedVersion
+        assert runtimeJar.name == "MPS-Re-modularized-${expectedVersion}.jar"
+        assert !report.sourceSets.contains('powersuits') && secondaryTasks.isEmpty()
+        assert archiveFiles.files == [runtimeJar] as Set
+        def changelog = changelogProvider.get().asFile.text
+        assert changelog.contains("MPS Re-modularized ${mod_version}")
+        assert !changelog.contains('mekanism/Mekanism') && !changelog.contains('Unable to generate changelog')
+        def output = reportFile.get().asFile
+        output.parentFile.mkdirs()
+        output.text = JsonOutput.prettyPrint(JsonOutput.toJson(report)) + '\n'
+        logger.lifecycle('Single-artifact release layout checks passed')
+    }
+}
+tasks.named('check') { dependsOn(verifyReleaseLayout) }

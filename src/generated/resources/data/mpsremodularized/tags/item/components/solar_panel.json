@@ -1,0 +1,29 @@
+{
+  "values": [
+    "mpsremodularized:component_solar_panel",
+    {
+      "id": "enderio:energetic_photovoltaic_module",
+      "required": false
+    },
+    {
+      "id": "mekanismgenerators:solar_panel",
+      "required": false
+    },
+    {
+      "id": "oritech:big_solar_panel_block",
+      "required": false
+    },
+    {
+      "id": "pneumaticcraft:solar_compressor",
+      "required": false
+    },
+    {
+      "id": "powah:solar_panel_basic",
+      "required": false
+    },
+    {
+      "id": "solarflux:sp_3",
+      "required": false
+    }
+  ]
+}

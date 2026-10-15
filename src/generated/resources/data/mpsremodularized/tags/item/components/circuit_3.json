@@ -1,0 +1,21 @@
+{
+  "values": [
+    "mpsremodularized:component_prototype_control_circuit_mkii",
+    {
+      "id": "mekanism:elite_control_circuit",
+      "required": false
+    },
+    {
+      "id": "ae2:printed_engineering_processor",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:digital_circuit",
+      "required": false
+    },
+    {
+      "id": "oritech:super_ai_chip",
+      "required": false
+    }
+  ]
+}

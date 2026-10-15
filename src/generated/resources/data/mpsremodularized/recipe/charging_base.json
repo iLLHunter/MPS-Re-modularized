@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_1"
+    },
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_1"
+    },
+    "P": {
+      "item": "minecraft:oak_pressure_plate"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "WBW",
+    "WCW",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:charging_base"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "F": {
+      "item": "mpsremodularized:component_force_field_emitter"
+    },
+    "H": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_4"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "WHW",
+    "WFW",
+    "WSW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:lightning_summoner"
+  }
+}

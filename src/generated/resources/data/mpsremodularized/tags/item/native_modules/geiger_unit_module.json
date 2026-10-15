@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "mekanism:module_geiger_unit",
+      "required": false
+    }
+  ]
+}

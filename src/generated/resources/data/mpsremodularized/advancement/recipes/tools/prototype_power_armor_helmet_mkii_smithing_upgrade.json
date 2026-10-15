@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_prototype_control_circuit_mkii": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mpsremodularized:components/circuit_3"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:prototype_power_armor_helmet_mkii_smithing_upgrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_component_prototype_control_circuit_mkii"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:prototype_power_armor_helmet_mkii_smithing_upgrade"
+    ]
+  }
+}

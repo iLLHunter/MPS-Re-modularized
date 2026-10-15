@@ -1,0 +1,9 @@
+{
+  "parent": "builtin/entity",
+  "loader": "mpsremodularized:obj",
+  "model": "mpsremodularized:models/item/armor/mps_helm.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "mpsremodularized:block/white"
+  }
+}

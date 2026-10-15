@@ -1,0 +1,13 @@
+{
+  "values": [
+    "mpsremodularized:component_capacitor",
+    {
+      "id": "enderio_evolution:capacitor_melodic",
+      "required": false
+    },
+    {
+      "id": "powah:ender_gate_spirited",
+      "required": false
+    }
+  ]
+}

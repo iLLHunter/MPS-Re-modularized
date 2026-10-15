@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "I": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "WIW",
+    "WCW",
+    "WWW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:tier_4_smithing_upgrade"
+  }
+}

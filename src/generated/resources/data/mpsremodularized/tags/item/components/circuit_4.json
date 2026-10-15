@@ -1,0 +1,17 @@
+{
+  "values": [
+    "mpsremodularized:component_control_circuit",
+    {
+      "id": "mekanism:ultimate_control_circuit",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:quantum_circuit",
+      "required": false
+    },
+    {
+      "id": "oritech:heisenberg_compensator",
+      "required": false
+    }
+  ]
+}

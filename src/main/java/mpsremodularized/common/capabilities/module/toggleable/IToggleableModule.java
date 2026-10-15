@@ -1,0 +1,22 @@
+package mpsremodularized.common.capabilities.module.toggleable;
+
+import mpsremodularized.common.capabilities.inventory.modularitem.IModularItem;
+import mpsremodularized.common.capabilities.module.powermodule.IPowerModule;
+import mpsremodularized.common.utils.TagUtils;
+import net.minecraft.world.item.ItemStack;
+
+public interface IToggleableModule extends IPowerModule {
+    default ItemStack toggleModule(boolean online) {
+        return TagUtils.setModuleIsOnline(getModule(), online);
+    }
+
+
+    default ItemStack toggleModule(boolean online, IModularItem item, int moduleIndex) {
+        return getModule();
+    }
+
+    @Override
+    default boolean isModuleOnline() {
+        return TagUtils.getModuleIsOnline(getModule());
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "values": [
+    "mpsremodularized:component_solenoid",
+    {
+      "id": "oritech:magnetic_coil",
+      "required": false
+    }
+  ]
+}

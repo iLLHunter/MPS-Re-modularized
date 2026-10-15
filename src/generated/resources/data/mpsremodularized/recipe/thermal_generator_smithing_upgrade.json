@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 4,
+    "ingredient": {
+      "tag": "c:ingots/netherite"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:prototype_thermal_generator_mkii"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:thermal_generator"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_4_smithing_upgrade"
+  }
+}

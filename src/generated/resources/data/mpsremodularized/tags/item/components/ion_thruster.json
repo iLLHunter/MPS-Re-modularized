@@ -1,0 +1,9 @@
+{
+  "values": [
+    "mpsremodularized:component_ion_thruster",
+    {
+      "id": "oritech:ion_thruster",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_donor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mpsremodularized:native_modules/stonecutter_module"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:stonecutter_module"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_donor"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:stonecutter_module"
+    ]
+  }
+}

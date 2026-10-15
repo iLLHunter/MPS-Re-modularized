@@ -1,0 +1,26 @@
+{
+  "mod": "modern_industrialization",
+  "output_field": "result",
+  "recipe": {
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      " W ",
+      "WI ",
+      " IW"
+    ],
+    "key": {
+      "I": {
+        "tag": "c:ingots/copper"
+      },
+      "W": {
+        "item": "mpsremodularized:component_wiring_standard"
+      }
+    },
+    "result": {
+      "id": "mpsremodularized:primitive_powerfist_frame",
+      "count": 1
+    }
+  },
+  "requires_recipe": "mpsremodularized:compat/machines/modern_industrialization/primitive_powerfist"
+}

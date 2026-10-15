@@ -1,0 +1,17 @@
+{
+  "values": [
+    "mpsremodularized:battery",
+    {
+      "id": "mekanism:ultimate_energy_cube",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:plutonium_battery",
+      "required": false
+    },
+    {
+      "id": "powah:battery_nitro",
+      "required": false
+    }
+  ]
+}

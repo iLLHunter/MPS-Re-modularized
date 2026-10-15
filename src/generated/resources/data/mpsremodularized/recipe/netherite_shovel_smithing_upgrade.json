@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 1,
+    "ingredient": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:diamond_shovel"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:netherite_shovel"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_4_smithing_upgrade"
+  }
+}

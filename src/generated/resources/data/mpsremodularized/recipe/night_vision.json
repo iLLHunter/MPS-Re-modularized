@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_2"
+    },
+    "L": {
+      "item": "mpsremodularized:component_hologram_emitter"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    "WLW",
+    "WCW",
+    "WLW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:night_vision"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "gascraft"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_donor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mpsremodularized:native_modules/gascraft_grenade_launcher_module"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:gascraft_grenade_launcher_module"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_donor"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:gascraft_grenade_launcher_module"
+    ]
+  }
+}

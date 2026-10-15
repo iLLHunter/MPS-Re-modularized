@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_3"
+    },
+    "F": {
+      "item": "mpsremodularized:component_force_field_emitter"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "FWF",
+    "WCW",
+    "FWF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:mob_repulsor"
+  }
+}

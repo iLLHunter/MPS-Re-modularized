@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "mpsremodularized:component_plating_diamond"
+    },
+    {
+      "item": "mpsremodularized:component_plating_diamond"
+    },
+    {
+      "item": "mpsremodularized:component_plating_diamond"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:plating_diamond"
+  }
+}

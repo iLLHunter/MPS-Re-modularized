@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "gascraft:gas_mask",
+      "required": false
+    }
+  ]
+}

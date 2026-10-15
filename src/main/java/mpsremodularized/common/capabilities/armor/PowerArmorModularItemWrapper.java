@@ -1,0 +1,167 @@
+package mpsremodularized.common.capabilities.armor;
+
+import mpsremodularized.common.config.MPSCommonConfig;
+
+import mpsremodularized.common.capabilities.inventory.modularitem.ModularItem;
+import mpsremodularized.common.capabilities.module.powermodule.ModuleCategory;
+import mpsremodularized.common.utils.ItemUtils;
+import mpsremodularized.common.config.ArmorConfig;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.items.wrapper.RangedWrapper;
+
+import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.Map;
+
+public class PowerArmorModularItemWrapper extends ModularItem {
+    ArmorItem.Type type;
+
+    public PowerArmorModularItemWrapper(@Nonnull ItemStack modularItem, int tier) {
+        this(modularItem, tier, getActualSize(modularItem, tier));
+    }
+
+    public PowerArmorModularItemWrapper(@Nonnull ItemStack modularItem, int tier, int size) {
+        super(modularItem, tier, size);
+        this.type = ItemUtils.getArmorType(modularItem);
+        ArmorItem.Type type = ItemUtils.getArmorType(getModularItemStack());
+        Map<ModuleCategory, RangedWrapper> rangedWrapperMap = new HashMap<>();
+        int numSlots = getSlots();
+
+        switch (type) {
+            case HELMET -> {
+
+                // Note on ranged wrapper. The max slot is actually max plus 1.
+                rangedWrapperMap.put(ModuleCategory.ARMOR, new RangedWrapper(this, 0, 1));
+                if (numSlots > 1) {
+                    rangedWrapperMap.put(ModuleCategory.ENERGY_STORAGE, new RangedWrapper(this, 1, 2));
+                    if (numSlots > 2) {
+                        rangedWrapperMap.put(ModuleCategory.ENERGY_GENERATION, new RangedWrapper(this, 2, 3));
+                        if (numSlots > 3) {
+                            rangedWrapperMap.put(ModuleCategory.NONE, new RangedWrapper(this, 3, numSlots));
+                        }
+                    }
+                }
+                setRangedWrapperMap(rangedWrapperMap);
+            }
+            case CHESTPLATE -> {
+                rangedWrapperMap.put(ModuleCategory.ARMOR, new RangedWrapper(this, 0, 1));
+                if (numSlots > 1) {
+                    rangedWrapperMap.put(ModuleCategory.ENERGY_STORAGE, new RangedWrapper(this, 1, 2));
+                    if (numSlots > 2) {
+                        rangedWrapperMap.put(ModuleCategory.ENERGY_GENERATION, new RangedWrapper(this, 2, 3));
+                        // TODO?: cooling system sub category?
+                        if (numSlots > 3) {
+                            rangedWrapperMap.put(ModuleCategory.FLUID_STORAGE, new RangedWrapper(this, 3, 4));
+                            if(numSlots > 4) {
+                                rangedWrapperMap.put(ModuleCategory.NONE, new RangedWrapper(this, 4, numSlots));
+                            }
+                        }
+                    }
+                }
+                setRangedWrapperMap(rangedWrapperMap);
+            }
+
+            case LEGGINGS -> {
+                rangedWrapperMap.put(ModuleCategory.ARMOR, new RangedWrapper(this, 0, 1));
+                if (numSlots > 1) {
+                    rangedWrapperMap.put(ModuleCategory.ENERGY_STORAGE, new RangedWrapper(this, 1, 2));
+                    if (numSlots > 2) {
+                        rangedWrapperMap.put(ModuleCategory.ENERGY_GENERATION, new RangedWrapper(this, 2, 3));
+                        if (numSlots > 3) {
+                            rangedWrapperMap.put(ModuleCategory.NONE, new RangedWrapper(this, 3, numSlots));
+                        }
+                    }
+                }
+                setRangedWrapperMap(rangedWrapperMap);
+            }
+
+            case BOOTS -> {
+                rangedWrapperMap.put(ModuleCategory.ARMOR, new RangedWrapper(this, 0, 1));
+                if (numSlots > 1) {
+                    rangedWrapperMap.put(ModuleCategory.ENERGY_STORAGE, new RangedWrapper(this, 1, 2));
+                    if (numSlots > 2) {
+                        rangedWrapperMap.put(ModuleCategory.ENERGY_GENERATION, new RangedWrapper(this, 2, 3));
+                        if (numSlots > 3) {
+                            rangedWrapperMap.put(ModuleCategory.NONE, new RangedWrapper(this, 3, numSlots));
+                        }
+                    }
+                }
+                setRangedWrapperMap(rangedWrapperMap);
+            }
+        }
+    }
+
+    public static int getActualSize(ItemStack modularItem, int tier) {
+        if (MPSCommonConfig.SERVER_SPEC.isLoaded()) {
+            ArmorItem.Type type = ItemUtils.getArmorType(modularItem);
+            switch (type) {
+                case HELMET -> {
+                    switch (tier) {
+                        case 1 -> {
+                            return ArmorConfig.helmInventorySlots1;
+                        }
+                        case 2 -> {
+                            return ArmorConfig.helmInventorySlots2;
+                        }
+                        case 3 -> {
+                            return ArmorConfig.helmInventorySlots3;
+                        }
+                        case 4 -> {
+                            return ArmorConfig.helmInventorySlots4;
+                        }
+                    }
+                }
+                case CHESTPLATE -> {
+                    switch (tier) {
+                        case 1 -> {
+                            return ArmorConfig.chestPlateInventorySlots1;
+                        }
+                        case 2 -> {
+                            return ArmorConfig.chestPlateInventorySlots2;
+                        }
+                        case 3 -> {
+                            return ArmorConfig.chestPlateInventorySlots3;
+                        }
+                        case 4 -> {
+                            return ArmorConfig.chestPlateInventorySlots4;
+                        }
+                    }
+                }
+                case LEGGINGS -> {
+                    switch (tier) {
+                        case 1 -> {
+                            return ArmorConfig.leggingsInventorySlots1;
+                        }
+                        case 2 -> {
+                            return ArmorConfig.leggingsInventorySlots2;
+                        }
+                        case 3 -> {
+                            return ArmorConfig.leggingsInventorySlots3;
+                        }
+                        case 4 -> {
+                            return ArmorConfig.leggingsInventorySlots4;
+                        }
+                    }
+                }
+                case BOOTS -> {
+                    switch (tier) {
+                        case 1 -> {
+                            return ArmorConfig.bootsInventorySlots1;
+                        }
+                        case 2 -> {
+                            return ArmorConfig.bootsInventorySlots2;
+                        }
+                        case 3 -> {
+                            return ArmorConfig.bootsInventorySlots3;
+                        }
+                        case 4 -> {
+                            return ArmorConfig.bootsInventorySlots4;
+                        }
+                    }
+                }
+            }
+        }
+        return 4;
+    }
+}

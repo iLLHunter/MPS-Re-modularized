@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 2,
+    "ingredient": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:prototype_power_armor_boots"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:prototype_power_armor_boots_mkii"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_3_smithing_upgrade"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "mffs:remote_controller",
+      "required": false
+    }
+  ]
+}

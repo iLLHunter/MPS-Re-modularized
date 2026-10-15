@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_1"
+    },
+    "F": {
+      "item": "minecraft:flint"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    " F ",
+    "WCW",
+    "ISI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:flint_and_steel"
+  }
+}

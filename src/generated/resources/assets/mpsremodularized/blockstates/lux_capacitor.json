@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "facing=down,waterlogged=false": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "x": 270
+    },
+    "facing=down,waterlogged=true": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "x": 270
+    },
+    "facing=east,waterlogged=false": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "y": 270
+    },
+    "facing=east,waterlogged=true": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "y": 270
+    },
+    "facing=north,waterlogged=false": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "y": 180
+    },
+    "facing=north,waterlogged=true": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "y": 180
+    },
+    "facing=south,waterlogged=false": {
+      "model": "mpsremodularized:block/lux_capacitor"
+    },
+    "facing=south,waterlogged=true": {
+      "model": "mpsremodularized:block/lux_capacitor"
+    },
+    "facing=up,waterlogged=false": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "x": 90
+    },
+    "facing=up,waterlogged=true": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "x": 90
+    },
+    "facing=west,waterlogged=false": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "y": 90
+    },
+    "facing=west,waterlogged=true": {
+      "model": "mpsremodularized:block/lux_capacitor",
+      "y": 90
+    }
+  }
+}

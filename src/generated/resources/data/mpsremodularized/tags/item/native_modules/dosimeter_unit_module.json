@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "mekanism:module_dosimeter_unit",
+      "required": false
+    }
+  ]
+}

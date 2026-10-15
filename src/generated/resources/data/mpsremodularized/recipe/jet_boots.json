@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "I": {
+      "type": "mpsremodularized:component",
+      "component": "ion_thruster"
+    },
+    "M": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_3"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "S S",
+    "CMC",
+    "IWI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:jet_boots"
+  }
+}

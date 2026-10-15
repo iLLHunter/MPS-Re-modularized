@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mpsremodularized:item/upgrade/tier_2_smithing_upgrade"
+  }
+}

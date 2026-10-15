@@ -1,0 +1,9 @@
+{
+  "values": [
+    "mpsremodularized:component_plating_iron",
+    {
+      "id": "oritech:reinforced_carbon_sheet",
+      "required": false
+    }
+  ]
+}

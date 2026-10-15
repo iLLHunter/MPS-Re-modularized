@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_2"
+    },
+    "F": {
+      "item": "mpsremodularized:wrench_module_frame"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "servo"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_standard"
+    }
+  },
+  "pattern": [
+    " F ",
+    "WCW",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:universal_wrench"
+  }
+}

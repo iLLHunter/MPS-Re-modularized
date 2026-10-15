@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:tag_empty",
+      "tag": "c:ingots/electrum"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "G": {
+      "tag": "c:ingots/gold"
+    },
+    "M": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_3"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    }
+  },
+  "pattern": [
+    "SGC",
+    "SMC",
+    "SGC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:plasma_cannon"
+  }
+}

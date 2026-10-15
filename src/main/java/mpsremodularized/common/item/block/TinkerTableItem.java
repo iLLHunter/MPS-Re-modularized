@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2021. MachineMuse, Lehjr
+ *  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *      Redistributions of source code must retain the above copyright notice, this
+ *      list of conditions and the following disclaimer.
+ *
+ *     Redistributions in binary form must reproduce the above copyright notice,
+ *     this list of conditions and the following disclaimer in the documentation
+ *     and/or other materials provided with the distribution.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ *  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ *  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ *  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ *  ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ *  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ *  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ *  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+package mpsremodularized.common.item.block;
+
+import mpsremodularized.common.capabilities.module.powermodule.ModuleCategory;
+import mpsremodularized.common.capabilities.module.powermodule.ModuleTarget;
+import mpsremodularized.common.capabilities.module.rightclick.RightClickModule;
+import mpsremodularized.common.container.InstallationAccess;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+
+import javax.annotation.Nonnull;
+
+public class TinkerTableItem extends BlockItem {
+    public TinkerTableItem(Block blockIn) {
+        super(blockIn, new Item.Properties()
+                .stacksTo(1)
+                .setNoRepair());
+    }
+
+    public static class RightClickie extends RightClickModule {
+        public RightClickie(@Nonnull ItemStack module) {
+            super(module, ModuleCategory.TOOL, ModuleTarget.TOOLONLY);
+        }
+
+        @Override
+        public InteractionResultHolder<ItemStack> use(@Nonnull ItemStack itemStackIn, Level level, Player playerIn, InteractionHand hand) {
+            if (!level.isClientSide()) {
+                if (InstallationAccess.openPortableTable(playerIn, hand)) return InteractionResultHolder.consume(itemStackIn);
+            }
+            return super.use(itemStackIn, level, playerIn, hand);
+        }
+    }
+}

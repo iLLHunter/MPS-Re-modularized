@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "mpsremodularized:component_plating_netherite"
+    },
+    {
+      "item": "mpsremodularized:component_plating_netherite"
+    },
+    {
+      "item": "mpsremodularized:component_plating_netherite"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:plating_netherite"
+  }
+}

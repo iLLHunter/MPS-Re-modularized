@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_control_circuit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mpsremodularized:components/circuit_4"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:glider"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_component_control_circuit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:glider"
+    ]
+  }
+}

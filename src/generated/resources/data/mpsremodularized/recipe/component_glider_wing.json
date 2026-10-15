@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mpsremodularized:component_artificial_muscle"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    }
+  },
+  "pattern": [
+    " II",
+    "IAS",
+    "I  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_glider_wing"
+  }
+}

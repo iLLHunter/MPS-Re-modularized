@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_wiring_standard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mpsremodularized:component_wiring_standard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mpsremodularized:component_plating_iron"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_component_wiring_standard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mpsremodularized:component_plating_iron"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "values": [
+    "mpsremodularized:component_computer_chip",
+    {
+      "id": "pneumaticcraft:printed_circuit_board",
+      "required": false
+    },
+    {
+      "id": "enderio:sentient_ender",
+      "required": false
+    }
+  ]
+}

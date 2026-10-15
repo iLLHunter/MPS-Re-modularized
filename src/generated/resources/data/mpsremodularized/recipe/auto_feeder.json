@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_2"
+    },
+    "F": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    },
+    "M": {
+      "type": "mpsremodularized:component",
+      "component": "rubber_hose"
+    },
+    "O": {
+      "tag": "c:chests"
+    },
+    "R": {
+      "item": "mpsremodularized:component_wiring_standard"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "servo"
+    }
+  },
+  "pattern": [
+    "FOF",
+    "RCR",
+    "SMS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:auto_feeder"
+  }
+}

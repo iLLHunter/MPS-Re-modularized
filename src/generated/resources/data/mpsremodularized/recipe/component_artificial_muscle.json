@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "mpsremodularized:component_carbon_myofiber"
+    },
+    "G": {
+      "item": "mpsremodularized:component_myofiber_gel"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "CGC",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_artificial_muscle"
+  }
+}

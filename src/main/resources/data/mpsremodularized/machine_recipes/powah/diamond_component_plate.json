@@ -1,0 +1,35 @@
+{
+  "mod": "powah",
+  "output_field": "result",
+  "recipe": {
+    "type": "powah:energizing",
+    "energy": 250000,
+    "ingredients": [
+      {
+        "item": "minecraft:diamond"
+      },
+      {
+        "item": "minecraft:diamond"
+      },
+      {
+        "item": "minecraft:diamond"
+      },
+      {
+        "item": "minecraft:diamond"
+      },
+      {
+        "item": "minecraft:diamond"
+      },
+      {
+        "item": "mpsremodularized:component_wiring_standard"
+      }
+    ],
+    "result": {
+      "id": "mpsremodularized:component_plating_diamond",
+      "count": 1
+    }
+  },
+  "native_recipes": [
+    "mpsremodularized:component_plating_diamond"
+  ]
+}

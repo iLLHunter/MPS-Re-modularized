@@ -1,0 +1,17 @@
+{
+  "values": [
+    "mpsremodularized:component_prototype_capacitor_mkii",
+    {
+      "id": "enderio_evolution:capacitor_vivid",
+      "required": false
+    },
+    {
+      "id": "enderio:octadic_capacitor",
+      "required": false
+    },
+    {
+      "id": "powah:ender_gate_niotic",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "gui_install": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:gui_install",
+        "stream": false
+      }
+    ]
+  },
+  "gui_select": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:gui_select",
+        "stream": false
+      }
+    ]
+  },
+  "boop": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:boop",
+        "stream": false
+      }
+    ]
+  },
+  "blower": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:blower",
+        "stream": false
+      }
+    ]
+  },
+  "glider": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:glider",
+        "stream": false
+      }
+    ]
+  },
+  "jet_boots": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:jet_boots",
+        "stream": false
+      }
+    ]
+  },
+  "jetpack": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:jetpack",
+        "stream": false
+      }
+    ]
+  },
+  "jump_assist": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:jump_assist",
+        "stream": false
+      }
+    ]
+  },
+  "swim_boost": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:swim_boost",
+        "stream": false
+      }
+    ]
+  },
+  "water_electrolyzer": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "mpsremodularized:water_electrolyzer",
+        "stream": false
+      }
+    ]
+  }
+}

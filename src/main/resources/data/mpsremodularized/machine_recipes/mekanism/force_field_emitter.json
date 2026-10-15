@@ -1,0 +1,23 @@
+{
+  "mod": "mekanism",
+  "output_field": "output",
+  "recipe": {
+    "type": "mekanism:combining",
+    "main_input": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid",
+      "count": 5
+    },
+    "extra_input": {
+      "tag": "c:ender_pearls",
+      "count": 4
+    },
+    "output": {
+      "id": "mpsremodularized:component_force_field_emitter",
+      "count": 1
+    }
+  },
+  "native_recipes": [
+    "mpsremodularized:component_force_field_emitter"
+  ]
+}

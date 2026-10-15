@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:tag_empty",
+      "tag": "c:ingots/electrum"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "M": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "O": {
+      "tag": "c:ingots/gold"
+    },
+    "S": {
+      "type": "mpsremodularized:component",
+      "component": "solenoid"
+    }
+  },
+  "pattern": [
+    "SOC",
+    "CMS",
+    "SOC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:railgun"
+  }
+}

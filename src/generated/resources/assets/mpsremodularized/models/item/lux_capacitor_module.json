@@ -1,0 +1,6 @@
+{
+  "parent": "mpsremodularized:item/lux_capacitor",
+  "textures": {
+    "layer0": "mpsremodularized:block/luxlight"
+  }
+}

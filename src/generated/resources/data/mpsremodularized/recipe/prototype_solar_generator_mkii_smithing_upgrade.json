@@ -1,0 +1,19 @@
+{
+  "type": "mpsremodularized:smithing_upgrade",
+  "addition": {
+    "count": 4,
+    "ingredient": {
+      "tag": "c:gems/diamond"
+    }
+  },
+  "base": {
+    "item": "mpsremodularized:prototype_solar_generator"
+  },
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:prototype_solar_generator_mkii"
+  },
+  "template": {
+    "item": "mpsremodularized:tier_3_smithing_upgrade"
+  }
+}

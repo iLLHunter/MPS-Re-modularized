@@ -1,0 +1,13 @@
+package mpsremodularized.mixin.compat;
+import mpsremodularized.common.compat.*;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.*;
+@Pseudo @Mixin(targets="me.desht.pneumaticcraft.common.network.PacketLeftClickEmpty",remap=false)
+public abstract class PneumaticLeftPacketMixin {
+ @Redirect(method="handle",at=@At(value="INVOKE",target="Lnet/minecraft/server/level/ServerPlayer;getMainHandItem()Lnet/minecraft/world/item/ItemStack;"))
+ private static ItemStack mps$held(net.minecraft.server.level.ServerPlayer player){return NativeToolIntegration.held(player,InteractionHand.MAIN_HAND);}
+}

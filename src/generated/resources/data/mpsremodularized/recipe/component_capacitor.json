@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "!": {
+      "type": "mpsremodularized:component",
+      "component": "computer_chip"
+    },
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "capacitor_3"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "WCW",
+    "W!W",
+    "WCW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:component_capacitor"
+  }
+}

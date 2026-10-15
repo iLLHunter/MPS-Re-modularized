@@ -1,0 +1,50 @@
+{
+  "mod": "industrialforegoing",
+  "output_field": "output",
+  "recipe": {
+    "type": "industrialforegoing:dissolution_chamber",
+    "input": [
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "type": "mpsremodularized:compatible_crafting",
+        "recipe": "rubber_hose"
+      },
+      {
+        "type": "mpsremodularized:compatible_crafting",
+        "recipe": "rubber_hose"
+      }
+    ],
+    "inputFluid": {
+      "fluid": "industrialforegoing:latex",
+      "amount": 250
+    },
+    "processingTime": 200,
+    "output": {
+      "id": "mpsremodularized:component_rubber_hose",
+      "count": 2
+    }
+  },
+  "required_items": [
+    "industrialforegoing:dryrubber"
+  ],
+  "native_recipes": [
+    "mpsremodularized:component_rubber_hose"
+  ]
+}

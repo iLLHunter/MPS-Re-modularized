@@ -1,0 +1,110 @@
+{
+  "parent": "minecraft:item/generated",
+  "display": {
+    "firstperson_lefthand": {
+      "rotation": [
+        176,
+        353,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ],
+      "translation": [
+        -4.31,
+        -0.25,
+        -0.08
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        176,
+        353,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ],
+      "translation": [
+        1.75,
+        -0.25,
+        -0.75
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        105,
+        180,
+        0
+      ],
+      "scale": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "translation": [
+        -5.25,
+        0.75,
+        3.5
+      ]
+    },
+    "ground": {
+      "rotation": [
+        160,
+        0,
+        0
+      ],
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ],
+      "translation": [
+        2,
+        1,
+        -1.75
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        165,
+        0,
+        0
+      ],
+      "scale": [
+        0.67,
+        0.67,
+        0.67
+      ],
+      "translation": [
+        -5.36,
+        -6.56,
+        -2.46
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        165,
+        0,
+        0
+      ],
+      "scale": [
+        0.67,
+        0.67,
+        0.67
+      ],
+      "translation": [
+        5.36,
+        -6.56,
+        -2.46
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "mpsremodularized:item/tool/handitem"
+  }
+}

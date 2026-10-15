@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+    modId="mpsremodularized"
+    version="${mod_version}"
+    displayName="MPS Re-modularized"
+    authors="MachineMuse, MPS Re-modularized contributors"
+    description='''
+        A mod which adds modular power armor, power tool, and a tinker table to configure them. Uses NeoForge FE energy.
+        '''
+    credits="Icons by WaterCandle, Modeling by SebK, Special thanks to TextureTurtle"
+    logoFile="logo.png"
+
+[[accessTransformers]]
+    file="META-INF/accesstransformer.cfg"
+
+[[dependencies.mpsremodularized]]
+    modId="neoforge"
+    type="required"
+    versionRange="${neo_version}"
+    side="BOTH"
+
+[[dependencies.mpsremodularized]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    side="BOTH"
+
+
+[[mixins]]
+    config="mpsremodularized.mixins.json"

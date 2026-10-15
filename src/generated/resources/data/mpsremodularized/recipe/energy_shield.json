@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "type": "mpsremodularized:component",
+      "component": "circuit_4"
+    },
+    "E": {
+      "item": "mpsremodularized:component_force_field_emitter"
+    },
+    "W": {
+      "item": "mpsremodularized:component_wiring_high_conductivity"
+    }
+  },
+  "pattern": [
+    "WEW",
+    "WCW",
+    "WEW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mpsremodularized:energy_shield"
+  }
+}

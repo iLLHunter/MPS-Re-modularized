@@ -1,0 +1,26 @@
+{
+  "mod": "immersiveengineering",
+  "output_field": "result",
+  "recipe": {
+    "type": "immersiveengineering:metal_press",
+    "energy": 20000,
+    "input": {
+      "item": "mpsremodularized:component_solenoid_template"
+    },
+    "mold": "mpsremodularized:component_mold",
+    "result": {
+      "id": "mpsremodularized:component_solenoid",
+      "count": 2
+    }
+  },
+  "required_tags": [
+    "c:plates/steel"
+  ],
+  "native_recipes": [
+    "mpsremodularized:component_solenoid"
+  ],
+  "requires_recipes": [
+    "mpsremodularized:compat/machines/immersiveengineering/prepare_component_mold",
+    "mpsremodularized:compat/machines/immersiveengineering/prepare_solenoid_template"
+  ]
+}

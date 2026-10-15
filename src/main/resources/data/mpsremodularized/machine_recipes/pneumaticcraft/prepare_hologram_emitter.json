@@ -1,0 +1,38 @@
+{
+  "mod": "pneumaticcraft",
+  "output_field": "result",
+  "recipe": {
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "GGG",
+      "BWR",
+      "GDL"
+    ],
+    "key": {
+      "G": {
+        "tag": "c:glass_blocks"
+      },
+      "W": {
+        "item": "mpsremodularized:component_wiring_standard"
+      },
+      "D": {
+        "tag": "c:dyes/green"
+      },
+      "L": {
+        "tag": "c:dusts/glowstone"
+      },
+      "B": {
+        "tag": "c:dyes/blue"
+      },
+      "R": {
+        "tag": "c:dyes/red"
+      }
+    },
+    "result": {
+      "id": "mpsremodularized:unfinished_hologram_emitter",
+      "count": 1
+    }
+  },
+  "requires_recipe": "mpsremodularized:compat/machines/pneumaticcraft/component_hologram_emitter"
+}
