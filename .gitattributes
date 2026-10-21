@@ -2,7 +2,9 @@
 * text=auto
 
 # Development-only content stays in the private build repository, not public exports.
-/.github export-ignore
+/.github/* export-ignore
+/.github/ISSUE_TEMPLATE -export-ignore
+/.github/ISSUE_TEMPLATE/** -export-ignore
 /.editorconfig export-ignore
 /.gradle export-ignore
 /branding export-ignore
